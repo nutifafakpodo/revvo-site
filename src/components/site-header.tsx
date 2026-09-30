@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { Logo } from "./logo";
 import { ButtonLink } from "./button";
-import { BUSINESS_SIGN_IN_URL, INTEREST_ANCHOR } from "@/lib/links";
+import { INTEREST_ANCHOR } from "@/lib/links";
 import { cn } from "@/lib/utils";
 
 /** Routes whose hero is dark navy: the transparent header renders light on top of it. */
@@ -66,14 +66,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
-          <ButtonLink
-            href={BUSINESS_SIGN_IN_URL}
-            variant={onDark ? "inverse" : "ghost"}
-            size="sm"
-            data-testid="link-sign-in"
-          >
-            Business sign in
-          </ButtonLink>
           <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="sm" data-testid="link-interest">
             Register interest <ArrowRight />
           </ButtonLink>
@@ -110,9 +102,6 @@ export function SiteHeader() {
             <div className="mt-2 flex flex-col gap-2 border-t border-border pt-4">
               <ButtonLink href={INTEREST_ANCHOR} variant="secondary" onClick={() => setOpen(false)}>
                 Register interest <ArrowRight />
-              </ButtonLink>
-              <ButtonLink href={BUSINESS_SIGN_IN_URL} variant="outline">
-                Business sign in
               </ButtonLink>
             </div>
           </nav>
