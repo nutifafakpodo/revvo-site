@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import {
   ArrowRight,
   BadgeCheck,
@@ -38,6 +39,12 @@ const STEPS = [
 ];
 
 export default function Drivers() {
+  const [plate, setPlate] = useState<string | null>(null);
+  const previewRef = useRef<HTMLDivElement>(null);
+  const lookup = (value: string) => {
+    setPlate(value);
+    previewRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  };
   usePageMeta(
     "For drivers",
     "Your car's verified service history, reminders, nearby workshops, parts that fit, insurance renewal and rewards, all from one vehicle passport.",
@@ -61,7 +68,7 @@ export default function Drivers() {
             </p>
             <div className="mt-8">
               <p className="mb-2 text-sm font-medium text-navy-200">Look up a vehicle by number plate</p>
-              <PlateLookup dark size="lg" />
+              <PlateLookup dark size="lg" onLookup={lookup} />
             </div>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={INTEREST_ANCHOR} variant="secondary">
@@ -73,7 +80,9 @@ export default function Drivers() {
             </div>
           </div>
           <Reveal className="flex justify-center lg:justify-end" delay={0.15}>
-            <PassportPreview />
+            <div ref={previewRef} className="w-full max-w-md scroll-mt-24">
+              <PassportPreview plate={plate ?? undefined} sample={plate !== null} />
+            </div>
           </Reveal>
         </div>
       </section>

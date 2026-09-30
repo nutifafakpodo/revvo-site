@@ -22,11 +22,6 @@ export const ADMIN_APP_URL = trim(
 export const BUSINESS_SIGN_IN_URL = `${BUSINESS_APP_URL}/sign-in`;
 export const BUSINESS_SIGN_UP_URL = `${BUSINESS_APP_URL}/sign-up`;
 
-/** Consumer-app plate search (see revvo-app /my-car). */
-export function plateLookupUrl(plate: string) {
-  return `${CONSUMER_APP_URL}/my-car?plate=${encodeURIComponent(plate.trim().toUpperCase())}`;
-}
-
 export const CONTACT_EMAIL: string = import.meta.env.VITE_CONTACT_EMAIL || "";
 
 /**

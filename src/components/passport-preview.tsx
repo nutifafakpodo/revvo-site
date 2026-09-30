@@ -11,7 +11,17 @@ const SERVICES = [
  * Illustrative vehicle passport, modelled on the demo Corolla record. Purely
  * presentational: it shows what a shared passport looks like.
  */
-export function PassportPreview({ className }: { className?: string }) {
+export function PassportPreview({
+  className,
+  plate = "GR-1234-20",
+  sample = false,
+}: {
+  className?: string;
+  /** Plate shown on the card; a looked-up plate replaces the demo one. */
+  plate?: string;
+  /** Marks the card as a sample for a plate the visitor typed. */
+  sample?: boolean;
+}) {
   return (
     <div
       className={cn(
@@ -19,11 +29,17 @@ export function PassportPreview({ className }: { className?: string }) {
         className,
       )}
       aria-label="Example vehicle passport"
+      data-testid="passport-preview"
     >
       <div className="bg-navy-700 px-5 pb-5 pt-4 text-white">
         <div className="flex items-center justify-between">
-          <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-teal-300">
+          <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.14em] text-teal-300">
             Vehicle passport
+            {sample && (
+              <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-[10px] tracking-wider text-amber-500" data-testid="passport-sample">
+                Sample
+              </span>
+            )}
           </span>
           <div className="flex items-center gap-1.5 text-navy-200">
             <QrCode className="size-4" />
@@ -35,8 +51,11 @@ export function PassportPreview({ className }: { className?: string }) {
             <p className="text-lg font-bold leading-tight">2019 Toyota Corolla</p>
             <p className="text-sm text-navy-200">GLi · 1.8L · Silver</p>
           </div>
-          <div className="rounded-md border border-white/20 bg-white/10 px-2.5 py-1 font-mono text-sm font-semibold tracking-wider">
-            GR-1234-20
+          <div
+            className="max-w-[10rem] truncate rounded-md border border-white/20 bg-white/10 px-2.5 py-1 font-mono text-sm font-semibold tracking-wider"
+            data-testid="passport-plate"
+          >
+            {plate}
           </div>
         </div>
         <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-teal-500/20 px-2.5 py-1 text-xs font-semibold text-teal-300">

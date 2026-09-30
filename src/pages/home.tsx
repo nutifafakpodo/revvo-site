@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight,
@@ -61,6 +62,12 @@ const DRIVER_FEATURES = [
 ];
 
 export default function Home() {
+  const [plate, setPlate] = useState<string | null>(null);
+  const previewRef = useRef<HTMLDivElement>(null);
+  const lookup = (value: string) => {
+    setPlate(value);
+    previewRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  };
   usePageMeta(
     "Revvo",
     "Revvo gives every vehicle a digital passport. Garages log verified service work, owners get proof, and buyers, insurers and dealers can trust the record. Coming soon to Accra, Ghana.",
@@ -99,11 +106,13 @@ export default function Home() {
             </div>
             <div className="mt-10">
               <p className="mb-2 text-sm font-medium text-navy-200">Driver? Look up a vehicle passport</p>
-              <PlateLookup dark />
+              <PlateLookup dark onLookup={lookup} />
             </div>
           </div>
           <Reveal className="flex justify-center lg:justify-end" delay={0.15}>
-            <PassportPreview />
+            <div ref={previewRef} className="w-full max-w-md scroll-mt-24">
+              <PassportPreview plate={plate ?? undefined} sample={plate !== null} />
+            </div>
           </Reveal>
         </div>
       </section>
