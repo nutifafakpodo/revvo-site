@@ -1,4 +1,3 @@
-import { useRef, useState } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight,
@@ -18,7 +17,6 @@ import {
 import { ButtonLink } from "@/components/button";
 import { Card, Eyebrow, Heading, IconBadge, Section, SectionHeader } from "@/components/section";
 import { PassportPreview } from "@/components/passport-preview";
-import { PlateLookup } from "@/components/plate-lookup";
 import { CtaBand } from "@/components/cta-band";
 import { Faq } from "@/components/faq";
 import { Reveal } from "@/components/reveal";
@@ -62,12 +60,6 @@ const DRIVER_FEATURES = [
 ];
 
 export default function Home() {
-  const [plate, setPlate] = useState<string | null>(null);
-  const previewRef = useRef<HTMLDivElement>(null);
-  const lookup = (value: string) => {
-    setPlate(value);
-    previewRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
-  };
   usePageMeta(
     "Revvo",
     "Revvo gives every vehicle a digital passport. Garages log verified service work, owners get proof, and buyers, insurers and dealers can trust the record. Coming soon to Accra, Ghana.",
@@ -104,15 +96,9 @@ export default function Home() {
                 See how it works for your business
               </ButtonLink>
             </div>
-            <div className="mt-10">
-              <p className="mb-2 text-sm font-medium text-navy-200">Driver? Look up a vehicle passport</p>
-              <PlateLookup dark onLookup={lookup} />
-            </div>
           </div>
           <Reveal className="flex justify-center lg:justify-end" delay={0.15}>
-            <div ref={previewRef} className="w-full max-w-md scroll-mt-24">
-              <PassportPreview plate={plate ?? undefined} sample={plate !== null} />
-            </div>
+            <PassportPreview />
           </Reveal>
         </div>
       </section>

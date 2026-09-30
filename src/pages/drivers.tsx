@@ -1,4 +1,3 @@
-import { useRef, useState } from "react";
 import {
   ArrowRight,
   BadgeCheck,
@@ -14,7 +13,6 @@ import {
 import { ButtonLink } from "@/components/button";
 import { Card, Eyebrow, Heading, IconBadge, Section, SectionHeader } from "@/components/section";
 import { PassportPreview } from "@/components/passport-preview";
-import { PlateLookup } from "@/components/plate-lookup";
 import { Reveal } from "@/components/reveal";
 import { INTEREST_ANCHOR } from "@/lib/links";
 import { ComingSoonBadge } from "@/components/coming-soon";
@@ -39,12 +37,6 @@ const STEPS = [
 ];
 
 export default function Drivers() {
-  const [plate, setPlate] = useState<string | null>(null);
-  const previewRef = useRef<HTMLDivElement>(null);
-  const lookup = (value: string) => {
-    setPlate(value);
-    previewRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
-  };
   usePageMeta(
     "For drivers",
     "Your car's verified service history, reminders, nearby workshops, parts that fit, insurance renewal and rewards, all from one vehicle passport.",
@@ -66,20 +58,14 @@ export default function Drivers() {
               need to keep it running: reminders, trusted workshops, parts that fit, insurance and
               rewards.
             </p>
-            <div className="mt-8">
-              <p className="mb-2 text-sm font-medium text-navy-200">Look up a vehicle by number plate</p>
-              <PlateLookup dark size="lg" onLookup={lookup} />
-            </div>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={INTEREST_ANCHOR} variant="secondary">
                 Register your interest <ArrowRight />
               </ButtonLink>
             </div>
           </div>
           <Reveal className="flex justify-center lg:justify-end" delay={0.15}>
-            <div ref={previewRef} className="w-full max-w-md scroll-mt-24">
-              <PassportPreview plate={plate ?? undefined} sample={plate !== null} />
-            </div>
+            <PassportPreview />
           </Reveal>
         </div>
       </section>
