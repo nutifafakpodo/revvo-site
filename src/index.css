@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand: deep navy + electric teal (shared with the product apps). */
+  --color-navy-950: hsl(220 50% 8%);
+  --color-navy-900: hsl(220 50% 12%);
+  --color-navy-800: hsl(220 50% 16%);
+  --color-navy-700: hsl(220 50% 20%);
+  --color-navy-600: hsl(220 45% 28%);
+  --color-navy-500: hsl(220 40% 40%);
+  --color-navy-200: hsl(220 30% 82%);
+  --color-navy-100: hsl(220 25% 92%);
+
+  --color-teal-600: hsl(175 100% 28%);
+  --color-teal-500: hsl(175 100% 35%);
+  --color-teal-400: hsl(175 90% 42%);
+  --color-teal-300: hsl(175 80% 55%);
+  --color-teal-100: hsl(175 70% 92%);
+  --color-teal-50: hsl(175 60% 96%);
+
+  --color-primary: hsl(220 50% 20%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-secondary: hsl(175 100% 35%);
+  --color-secondary-foreground: hsl(0 0% 100%);
+  --color-background: hsl(0 0% 99%);
+  --color-foreground: hsl(220 50% 10%);
+  --color-muted: hsl(220 20% 95%);
+  --color-muted-foreground: hsl(220 15% 42%);
+  --color-border: hsl(220 20% 89%);
+  --color-card: hsl(0 0% 100%);
+  --color-amber-500: hsl(38 92% 50%);
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+
+  --shadow-card: 0 1px 2px hsl(220 45% 15% / 0.05), 0 12px 32px -12px hsl(220 45% 15% / 0.14);
+  --shadow-float: 0 24px 60px -20px hsl(220 50% 10% / 0.45), 0 4px 12px -4px hsl(220 50% 10% / 0.25);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  ::selection {
+    background: hsl(175 100% 35% / 0.25);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-teal-500);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer utilities {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+  .hero-grid {
+    background-image:
+      linear-gradient(hsl(0 0% 100% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 100% / 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at 60% 40%, black 30%, transparent 75%);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}

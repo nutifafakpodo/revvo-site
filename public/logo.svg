@@ -1,0 +1,5 @@
+<svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="6" width="36" height="36" rx="8" fill="hsl(220 50% 20%)"/>
+  <path d="M11 26l4-10h2l-4 10h-2zm6 0l4-10h2l-4 10h-2zm6 0l4-10h2l-4 10h-2z" fill="hsl(175 100% 35%)"/>
+  <text x="46" y="32" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-weight="800" font-size="24" fill="hsl(220 50% 20%)" letter-spacing="-0.5">Revvo</text>
+</svg>
