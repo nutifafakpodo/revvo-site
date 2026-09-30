@@ -16,7 +16,7 @@ import { Card, Eyebrow, Heading, IconBadge, Section, SectionHeader } from "@/com
 import { PassportPreview } from "@/components/passport-preview";
 import { PlateLookup } from "@/components/plate-lookup";
 import { Reveal } from "@/components/reveal";
-import { CONSUMER_APP_URL, INTEREST_ANCHOR } from "@/lib/links";
+import { INTEREST_ANCHOR } from "@/lib/links";
 import { ComingSoonBadge } from "@/components/coming-soon";
 import { usePageMeta } from "@/lib/seo";
 
@@ -73,9 +73,6 @@ export default function Drivers() {
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={INTEREST_ANCHOR} variant="secondary">
                 Register your interest <ArrowRight />
-              </ButtonLink>
-              <ButtonLink href={CONSUMER_APP_URL} variant="inverse" external>
-                Open the app
               </ButtonLink>
             </div>
           </div>
@@ -139,8 +136,8 @@ export default function Drivers() {
             </p>
           </div>
           <div className="flex flex-col gap-3">
-            <ButtonLink href={CONSUMER_APP_URL} variant="primary" size="lg" external>
-              Open the app <ArrowRight />
+            <ButtonLink href={INTEREST_ANCHOR} variant="primary" size="lg">
+              Register your interest <ArrowRight />
             </ButtonLink>
             <ButtonLink href="/trust" variant="outline" size="lg">
               What buyers can and cannot see

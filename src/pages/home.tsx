@@ -23,7 +23,7 @@ import { CtaBand } from "@/components/cta-band";
 import { Faq } from "@/components/faq";
 import { Reveal } from "@/components/reveal";
 import { AUDIENCES, DRIVER_AUDIENCE } from "@/lib/content";
-import { CONSUMER_APP_URL, INTEREST_ANCHOR } from "@/lib/links";
+import { INTEREST_ANCHOR } from "@/lib/links";
 import { ComingSoonBadge } from "@/components/coming-soon";
 import { usePageMeta } from "@/lib/seo";
 
@@ -253,9 +253,6 @@ export default function Home() {
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <ButtonLink href="/drivers" variant="secondary">
             See the driver app <ArrowRight />
-          </ButtonLink>
-          <ButtonLink href={CONSUMER_APP_URL} variant="inverse" external>
-            Open the app
           </ButtonLink>
         </div>
       </Section>
