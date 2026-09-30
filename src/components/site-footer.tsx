@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Logo } from "./logo";
-import { ADMIN_APP_URL, BUSINESS_SIGN_IN_URL, BUSINESS_SIGN_UP_URL, CONSUMER_APP_URL, CONTACT_EMAIL, GOOGLE_FORM_URL } from "@/lib/links";
+import { ADMIN_APP_URL, BUSINESS_SIGN_IN_URL, BUSINESS_SIGN_UP_URL, CONSUMER_APP_URL, CONTACT_EMAIL, INTEREST_ANCHOR } from "@/lib/links";
 
 const COLUMNS: { title: string; links: { label: string; href: string; external?: boolean }[] }[] = [
   {
@@ -26,7 +26,7 @@ const COLUMNS: { title: string; links: { label: string; href: string; external?:
   {
     title: "Company",
     links: [
-      { label: "Register your interest", href: GOOGLE_FORM_URL, external: true },
+      { label: "Register your interest", href: INTEREST_ANCHOR, external: true },
       { label: "About the pilot", href: "/pilot" },
       { label: "Trust & privacy", href: "/trust" },
       ...(CONTACT_EMAIL ? [{ label: "Contact", href: `mailto:${CONTACT_EMAIL}`, external: true }] : []),

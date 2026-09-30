@@ -30,15 +30,38 @@ export function plateLookupUrl(plate: string) {
 export const CONTACT_EMAIL: string = import.meta.env.VITE_CONTACT_EMAIL || "";
 
 /**
- * Google Form that collects interested businesses and drivers. Accepts the
- * form's "viewform" link; the embed URL is derived from it.
+ * "Revvo — Register your interest" Google Form. The site renders its own form
+ * and posts straight to the Google Form's formResponse endpoint (no embed, no
+ * Google sign-in). Responses land in the form's Responses tab / linked Sheet.
+ * Entry ids come from the published form's viewform HTML.
  */
-export const GOOGLE_FORM_URL: string = (
-  import.meta.env.VITE_GOOGLE_FORM_URL ||
-  "https://docs.google.com/forms/d/1prJH1AEcLLKOG3QNDdn0RP3ZCIakDC9QdWRsOoks2U4/viewform"
-).split("?")[0];
-
-export const GOOGLE_FORM_EMBED_URL = `${GOOGLE_FORM_URL}?embedded=true`;
+export const INTEREST_FORM = {
+  viewUrl:
+    "https://docs.google.com/forms/d/e/1FAIpQLSdJc8nkHK9KQ1bs0AMR4cIYf1LDaSSdGCAgRwL2cZGCUiZwiA/viewform",
+  action:
+    "https://docs.google.com/forms/d/e/1FAIpQLSdJc8nkHK9KQ1bs0AMR4cIYf1LDaSSdGCAgRwL2cZGCUiZwiA/formResponse",
+  fields: {
+    type: "entry.735727478",
+    name: "entry.503804975",
+    business: "entry.1497303247",
+    phone: "entry.400873194",
+    email: "entry.142340320",
+    city: "entry.1647367719",
+    message: "entry.1959086185",
+  },
+  /** Must match the Google Form's multiple-choice options exactly. */
+  types: [
+    "Driver / car owner",
+    "Garage or workshop",
+    "Service bay (fuel station, quick-lube)",
+    "Parts reseller",
+    "Parts manufacturer",
+    "Dealership",
+    "Insurance company",
+    "Fleet operator",
+    "Other",
+  ],
+} as const;
 
 /** Same-page anchor of the interest form rendered on every page. */
 export const INTEREST_ANCHOR = "#interest";

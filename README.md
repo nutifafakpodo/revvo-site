@@ -30,13 +30,19 @@ All settings are build-time `VITE_*` variables (see `.env.example`).
 | `VITE_CONSUMER_APP_URL` | Driver app (plate lookup, "Open the app") | `/app` |
 | `VITE_BUSINESS_APP_URL` | Business app (sign in / sign up) | `/business` |
 | `VITE_ADMIN_APP_URL` | Admin console (footer link) | `/admin` |
-| `VITE_GOOGLE_FORM_URL` | Google Form (`viewform` link) embedded on every page | the "Revvo — Register your interest" form |
 | `VITE_CONTACT_EMAIL` | Optional contact email in the footer | unset |
 | `BASE_PATH` | Sub-path the site is served from | `/` |
 
-Every page ends with a "Register your interest" section that embeds the
-Google Form, and a "Coming soon" bar sits above the header. Responses land in
-the form's Google Sheet.
+## Interest form
+
+Every page ends with a "Register your interest" form (`#interest`), and a
+"Coming soon" bar sits above the header. The form is the site's own HTML and
+posts directly to the Google Form **"Revvo — Register your interest"**
+(`formResponse` endpoint), so visitors never see Google's UI or a sign-in
+prompt. Responses appear in that form's Responses tab. The endpoint, entry ids
+and the "I am a…" options live in `INTEREST_FORM` in `src/lib/links.ts`; if
+you change the Google Form's questions, update them there (ids are in the
+published form's page source as `entry.NNN`).
 
 ## Deploy
 
