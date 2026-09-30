@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Logo } from "./logo";
-import { ADMIN_APP_URL, BUSINESS_SIGN_IN_URL, BUSINESS_SIGN_UP_URL, CONSUMER_APP_URL, CONTACT_EMAIL } from "@/lib/links";
+import { ADMIN_APP_URL, BUSINESS_SIGN_IN_URL, BUSINESS_SIGN_UP_URL, CONSUMER_APP_URL, CONTACT_EMAIL, GOOGLE_FORM_URL } from "@/lib/links";
 
 const COLUMNS: { title: string; links: { label: string; href: string; external?: boolean }[] }[] = [
   {
@@ -26,7 +26,8 @@ const COLUMNS: { title: string; links: { label: string; href: string; external?:
   {
     title: "Company",
     links: [
-      { label: "Join the pilot", href: "/pilot" },
+      { label: "Register your interest", href: GOOGLE_FORM_URL, external: true },
+      { label: "About the pilot", href: "/pilot" },
       { label: "Trust & privacy", href: "/trust" },
       ...(CONTACT_EMAIL ? [{ label: "Contact", href: `mailto:${CONTACT_EMAIL}`, external: true }] : []),
     ],
@@ -43,7 +44,7 @@ export function SiteFooter() {
             The verified service record for every car. Built for garages, sellers, dealers,
             insurers, fleets and the drivers they serve.
           </p>
-          <p className="mt-4 text-xs text-navy-500">Piloting in Accra, Ghana.</p>
+          <p className="mt-4 text-xs text-navy-500">Coming soon to Accra, Ghana.</p>
         </div>
         {COLUMNS.map((col) => (
           <div key={col.title}>

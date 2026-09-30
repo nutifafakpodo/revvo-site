@@ -15,7 +15,8 @@ import { Card, Eyebrow, Heading, IconBadge, Section, SectionHeader } from "@/com
 import { PassportPreview } from "@/components/passport-preview";
 import { PlateLookup } from "@/components/plate-lookup";
 import { Reveal } from "@/components/reveal";
-import { CONSUMER_APP_URL } from "@/lib/links";
+import { CONSUMER_APP_URL, INTEREST_ANCHOR } from "@/lib/links";
+import { ComingSoonBadge } from "@/components/coming-soon";
 import { usePageMeta } from "@/lib/seo";
 
 const FEATURES = [
@@ -48,6 +49,7 @@ export default function Drivers() {
         <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="container-x relative grid items-center gap-12 py-20 lg:grid-cols-2 lg:py-24">
           <div>
+            <ComingSoonBadge light className="mb-4" />
             <Eyebrow className="text-teal-300">Revvo App</Eyebrow>
             <Heading as="h1" className="text-white">
               Your car's full story, in your pocket.
@@ -61,9 +63,12 @@ export default function Drivers() {
               <p className="mb-2 text-sm font-medium text-navy-200">Look up a vehicle by number plate</p>
               <PlateLookup dark size="lg" />
             </div>
-            <div className="mt-6">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <ButtonLink href={INTEREST_ANCHOR} variant="secondary">
+                Register your interest <ArrowRight />
+              </ButtonLink>
               <ButtonLink href={CONSUMER_APP_URL} variant="inverse" external>
-                Open the app <ArrowRight />
+                Open the app
               </ButtonLink>
             </div>
           </div>

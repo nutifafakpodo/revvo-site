@@ -3,6 +3,7 @@ import { Card, Eyebrow, Heading, IconBadge, Section, SectionHeader } from "@/com
 import { CtaBand } from "@/components/cta-band";
 import { Reveal } from "@/components/reveal";
 import { usePageMeta } from "@/lib/seo";
+import { ComingSoonBadge } from "@/components/coming-soon";
 
 const PRINCIPLES = [
   {
@@ -57,6 +58,7 @@ export default function Trust() {
     <>
       <section className="border-b border-border bg-card">
         <div className="container-x py-16 sm:py-20">
+          <ComingSoonBadge className="mb-4" />
           <Eyebrow>Trust & privacy</Eyebrow>
           <Heading as="h1" className="max-w-3xl">
             A record is only useful if it can be trusted. And only fair if it protects the owner.
@@ -145,7 +147,7 @@ export default function Trust() {
 
       <CtaBand
         title="Questions about data handling?"
-        body="Tell us what you need on the pilot form and we will walk you through exactly what is stored, who can see it, and why."
+        body="Register your interest and tell us what you need. We will walk you through exactly what is stored, who can see it, and why."
       />
     </>
   );

@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { Logo } from "./logo";
 import { ButtonLink } from "./button";
-import { BUSINESS_SIGN_IN_URL } from "@/lib/links";
+import { BUSINESS_SIGN_IN_URL, INTEREST_ANCHOR } from "@/lib/links";
 import { cn } from "@/lib/utils";
 
 /** Routes whose hero is dark navy: the transparent header renders light on top of it. */
@@ -74,8 +74,8 @@ export function SiteHeader() {
           >
             Business sign in
           </ButtonLink>
-          <ButtonLink href="/pilot" variant="secondary" size="sm" data-testid="link-pilot">
-            Join the pilot <ArrowRight />
+          <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="sm" data-testid="link-interest">
+            Register interest <ArrowRight />
           </ButtonLink>
         </div>
 
@@ -108,8 +108,8 @@ export function SiteHeader() {
               </Link>
             ))}
             <div className="mt-2 flex flex-col gap-2 border-t border-border pt-4">
-              <ButtonLink href="/pilot" variant="secondary">
-                Join the pilot <ArrowRight />
+              <ButtonLink href={INTEREST_ANCHOR} variant="secondary" onClick={() => setOpen(false)}>
+                Register interest <ArrowRight />
               </ButtonLink>
               <ButtonLink href={BUSINESS_SIGN_IN_URL} variant="outline">
                 Business sign in

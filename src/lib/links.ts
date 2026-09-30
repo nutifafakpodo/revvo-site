@@ -27,6 +27,18 @@ export function plateLookupUrl(plate: string) {
   return `${CONSUMER_APP_URL}/my-car?plate=${encodeURIComponent(plate.trim().toUpperCase())}`;
 }
 
-/** Pilot sign-up delivery. Either a JSON POST endpoint or a mailto fallback. */
-export const PILOT_FORM_ENDPOINT: string = import.meta.env.VITE_PILOT_FORM_ENDPOINT || "";
 export const CONTACT_EMAIL: string = import.meta.env.VITE_CONTACT_EMAIL || "";
+
+/**
+ * Google Form that collects interested businesses and drivers. Accepts the
+ * form's "viewform" link; the embed URL is derived from it.
+ */
+export const GOOGLE_FORM_URL: string = (
+  import.meta.env.VITE_GOOGLE_FORM_URL ||
+  "https://docs.google.com/forms/d/1prJH1AEcLLKOG3QNDdn0RP3ZCIakDC9QdWRsOoks2U4/viewform"
+).split("?")[0];
+
+export const GOOGLE_FORM_EMBED_URL = `${GOOGLE_FORM_URL}?embedded=true`;
+
+/** Same-page anchor of the interest form rendered on every page. */
+export const INTEREST_ANCHOR = "#interest";

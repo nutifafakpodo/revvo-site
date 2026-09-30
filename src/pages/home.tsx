@@ -22,7 +22,8 @@ import { CtaBand } from "@/components/cta-band";
 import { Faq } from "@/components/faq";
 import { Reveal } from "@/components/reveal";
 import { AUDIENCES, DRIVER_AUDIENCE } from "@/lib/content";
-import { CONSUMER_APP_URL } from "@/lib/links";
+import { CONSUMER_APP_URL, INTEREST_ANCHOR } from "@/lib/links";
+import { ComingSoonBadge } from "@/components/coming-soon";
 import { usePageMeta } from "@/lib/seo";
 
 const STEPS = [
@@ -62,7 +63,7 @@ const DRIVER_FEATURES = [
 export default function Home() {
   usePageMeta(
     "Revvo",
-    "Revvo gives every vehicle a digital passport. Garages log verified service work, owners get proof, and buyers, insurers and dealers can trust the record. Now piloting in Accra, Ghana.",
+    "Revvo gives every vehicle a digital passport. Garages log verified service work, owners get proof, and buyers, insurers and dealers can trust the record. Coming soon to Accra, Ghana.",
   );
 
   return (
@@ -80,10 +81,7 @@ export default function Home() {
         />
         <div className="container-x relative grid items-center gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-teal-400/30 bg-teal-500/15 px-3 py-1 text-xs font-semibold text-teal-300">
-              <span className="size-1.5 rounded-full bg-teal-300" aria-hidden="true" />
-              Now piloting in Accra, Ghana
-            </p>
+            <ComingSoonBadge light />
             <Heading as="h1" className="mt-6 text-white">
               Every service your car gets, <span className="text-teal-300">verified and on record.</span>
             </Heading>
@@ -92,8 +90,8 @@ export default function Home() {
               proof, and buyers, insurers and dealers can finally trust what they see.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/pilot" variant="secondary" size="lg" data-testid="hero-pilot">
-                Join the pilot <ArrowRight />
+              <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="lg" data-testid="hero-interest">
+                Register your interest <ArrowRight />
               </ButtonLink>
               <ButtonLink href="/businesses" variant="inverse" size="lg">
                 See how it works for your business
@@ -205,8 +203,8 @@ export default function Home() {
               <ButtonLink href="/businesses" variant="primary">
                 Explore business tools <ArrowRight />
               </ButtonLink>
-              <ButtonLink href="/pilot" variant="outline">
-                Join the pilot
+              <ButtonLink href={INTEREST_ANCHOR} variant="outline">
+                Register interest
               </ButtonLink>
             </div>
           </div>

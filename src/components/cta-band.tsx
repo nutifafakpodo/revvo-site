@@ -1,10 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "./button";
-import { BUSINESS_SIGN_IN_URL } from "@/lib/links";
+import { INTEREST_ANCHOR } from "@/lib/links";
 
 export function CtaBand({
   title = "Bring your workshop onto Revvo.",
-  body = "We are onboarding a small cohort of service bays, parts sellers and insurers in Accra. Join the pilot and start logging verified services this month.",
+  body = "We are lining up a first cohort of service bays, parts sellers and insurers in Accra. Register your interest and we will contact you before launch.",
 }: {
   title?: string;
   body?: string;
@@ -22,11 +22,11 @@ export function CtaBand({
             <h2 className="text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h2>
             <p className="mt-4 text-lg text-navy-200">{body}</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <ButtonLink href="/pilot" variant="secondary" size="lg">
-                Join the pilot <ArrowRight />
+              <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="lg">
+                Register your interest <ArrowRight />
               </ButtonLink>
-              <ButtonLink href={BUSINESS_SIGN_IN_URL} variant="inverse" size="lg">
-                Already a partner? Sign in
+              <ButtonLink href="/pilot" variant="inverse" size="lg">
+                About the pilot
               </ButtonLink>
             </div>
           </div>

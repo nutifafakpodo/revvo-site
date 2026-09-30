@@ -38,7 +38,7 @@ export const AUDIENCES: Audience[] = [
       "Order parts from verified sellers without leaving the job.",
       "Invite your team; every record carries who logged it.",
     ],
-    cta: { label: "Start as a garage", href: "/pilot" },
+    cta: { label: "Start as a garage", href: "#interest" },
   },
   {
     id: "parts-sellers",
@@ -54,7 +54,7 @@ export const AUDIENCES: Audience[] = [
       "Order management: accept, fulfil, track delivery status and notes.",
       "Stock is reserved on order so you never oversell.",
     ],
-    cta: { label: "List your inventory", href: "/pilot" },
+    cta: { label: "List your inventory", href: "#interest" },
   },
   {
     id: "manufacturers",
@@ -69,7 +69,7 @@ export const AUDIENCES: Audience[] = [
       "Demand visibility from the services being logged every day.",
       "Sell to service bays and consumers through one marketplace.",
     ],
-    cta: { label: "Talk to us", href: "/pilot" },
+    cta: { label: "Talk to us", href: "#interest" },
   },
   {
     id: "dealerships",
@@ -85,7 +85,7 @@ export const AUDIENCES: Audience[] = [
       "Service, CRM and marketplace tools for your workshop too.",
       "A verified provenance story that supports certified pre-owned resale.",
     ],
-    cta: { label: "Partner as a dealership", href: "/pilot" },
+    cta: { label: "Partner as a dealership", href: "#interest" },
   },
   {
     id: "insurers",
@@ -101,7 +101,7 @@ export const AUDIENCES: Audience[] = [
       "Servicing trends and verified history to inform underwriting.",
       "Pilot flow is request-based: you confirm the policy, no payments are taken on your behalf.",
     ],
-    cta: { label: "Become an insurance partner", href: "/pilot" },
+    cta: { label: "Become an insurance partner", href: "#interest" },
   },
   {
     id: "fleets",
@@ -116,7 +116,7 @@ export const AUDIENCES: Audience[] = [
       "Reminders for scheduled maintenance across the fleet.",
       "Verified history that holds its value when you dispose of vehicles.",
     ],
-    cta: { label: "Bring your fleet", href: "/pilot" },
+    cta: { label: "Bring your fleet", href: "#interest" },
   },
 ];
 
@@ -145,7 +145,7 @@ export const FAQ: { q: string; a: string }[] = [
     a: "Not during the pilot. Marketplace orders and insurance renewals are request-based: the seller or insurer confirms and settles with the customer directly. We add payment processing once fulfilment and dispute rules are in place.",
   },
   {
-    q: "Where is Revvo available?",
-    a: "We are piloting with service bays, parts sellers and an insurance partner in Accra, Ghana. If you operate elsewhere, tell us on the pilot form and we will let you know when we reach you.",
+    q: "When and where is Revvo available?",
+    a: "Revvo is coming soon, launching first with service bays, parts sellers and an insurance partner in Accra, Ghana. Register your interest below and we will contact you before launch, wherever you operate.",
   },
 ];

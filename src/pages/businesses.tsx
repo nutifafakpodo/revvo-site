@@ -4,7 +4,8 @@ import { Eyebrow, Heading, IconBadge, Section, SectionHeader } from "@/component
 import { CtaBand } from "@/components/cta-band";
 import { Reveal } from "@/components/reveal";
 import { AUDIENCES } from "@/lib/content";
-import { BUSINESS_SIGN_UP_URL } from "@/lib/links";
+import { INTEREST_ANCHOR } from "@/lib/links";
+import { ComingSoonBadge } from "@/components/coming-soon";
 import { usePageMeta } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +29,7 @@ export default function Businesses() {
     <>
       <section className="border-b border-border bg-card">
         <div className="container-x py-16 sm:py-20">
+          <ComingSoonBadge className="mb-4" />
           <Eyebrow>Revvo Business</Eyebrow>
           <Heading as="h1" className="max-w-3xl">
             One workspace for every business that touches a car.
@@ -38,11 +40,11 @@ export default function Businesses() {
             modules you need.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/pilot" variant="secondary" size="lg">
-              Join the pilot <ArrowRight />
+            <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="lg">
+              Register your interest <ArrowRight />
             </ButtonLink>
-            <ButtonLink href={BUSINESS_SIGN_UP_URL} variant="outline" size="lg" external>
-              Create a business account
+            <ButtonLink href="/pilot" variant="outline" size="lg">
+              About the pilot
             </ButtonLink>
           </div>
           <nav className="mt-10 flex flex-wrap gap-2" aria-label="Business types">

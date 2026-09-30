@@ -1,6 +1,8 @@
 import { Route, Switch, Router as WouterRouter, useLocation } from "wouter";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ComingSoonBar } from "@/components/coming-soon";
+import { InterestForm } from "@/components/interest-form";
 import Home from "@/pages/home";
 import Businesses from "@/pages/businesses";
 import Drivers from "@/pages/drivers";
@@ -33,9 +35,11 @@ export default function App() {
       >
         Skip to content
       </a>
+      <ComingSoonBar />
       <SiteHeader />
       <main id="main" className="min-h-[60vh]">
         <Pages />
+        <InterestForm />
       </main>
       <SiteFooter />
     </WouterRouter>

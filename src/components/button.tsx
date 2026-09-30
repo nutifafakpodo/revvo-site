@@ -50,7 +50,7 @@ export function ButtonLink({
     "href"
   >) {
   const cls = buttonClass(variant, size, className);
-  if (external || /^(https?:)?\/\//.test(href) || href.startsWith("mailto:")) {
+  if (external || /^(https?:)?\/\//.test(href) || href.startsWith("mailto:") || href.startsWith("#")) {
     return <a href={href} className={cls} {...props} />;
   }
   return <Link href={href} className={cls} {...props} />;
