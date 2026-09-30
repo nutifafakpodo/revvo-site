@@ -1,17 +1,8 @@
 import { Link } from "wouter";
 import { Logo } from "./logo";
-import { ADMIN_APP_URL, BUSINESS_SIGN_IN_URL, BUSINESS_SIGN_UP_URL, CONSUMER_APP_URL, CONTACT_EMAIL, INTEREST_ANCHOR } from "@/lib/links";
+import { CONTACT_EMAIL, INTEREST_ANCHOR } from "@/lib/links";
 
 const COLUMNS: { title: string; links: { label: string; href: string; external?: boolean }[] }[] = [
-  {
-    title: "Product",
-    links: [
-      { label: "Open the driver app", href: CONSUMER_APP_URL, external: true },
-      { label: "Business sign in", href: BUSINESS_SIGN_IN_URL, external: true },
-      { label: "Create a business account", href: BUSINESS_SIGN_UP_URL, external: true },
-      { label: "Admin console", href: ADMIN_APP_URL, external: true },
-    ],
-  },
   {
     title: "Who it's for",
     links: [
@@ -37,7 +28,7 @@ const COLUMNS: { title: string; links: { label: string; href: string; external?:
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-navy-950 text-navy-200">
-      <div className="container-x grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="container-x grid gap-10 py-14 md:grid-cols-[1.6fr_1fr_1fr]">
         <div className="max-w-xs">
           <Logo light />
           <p className="mt-4 text-sm leading-relaxed">
