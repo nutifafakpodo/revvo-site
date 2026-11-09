@@ -124,10 +124,11 @@ export default function Home() {
               </p>
             </StaggerItem>
             <StaggerItem>
-              <Heading as="h1" className="mt-3 text-white">
-                <span className="block">Log the job once.</span>
+              <Heading as="h1" className="mt-3 text-white sm:text-5xl lg:text-[3.4rem] lg:leading-[1.08]">
+                <span className="block">Log the servicing job.</span>
+                <span className="block text-teal-300">Get paid by the customer.</span>
                 <span className="block bg-gradient-to-r from-teal-300 to-teal-400 bg-clip-text text-transparent">
-                  Keep the customer for years.
+                  Keep the customer coming back for years.
                 </span>
               </Heading>
             </StaggerItem>
