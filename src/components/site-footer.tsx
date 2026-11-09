@@ -32,17 +32,19 @@ export function SiteFooter() {
     <footer className="relative overflow-clip border-t border-border bg-navy-950 text-navy-200">
       <FloatingParts tone="dark" variant={2} />
       {/* a quiet road along the top edge */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 opacity-80" aria-hidden="true">
-        <Traffic size="sm" className="h-20" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 opacity-80" aria-hidden="true">
+        <Traffic size="sm" offset={2} className="h-20" />
       </div>
-      <div className="container-x relative grid gap-10 pb-14 pt-24 md:grid-cols-[1.6fr_1fr_1fr]">
+      <div className="container-x relative grid gap-10 pb-14 pt-28 md:grid-cols-[1.6fr_1fr_1fr]">
         <div className="max-w-xs">
           <Logo light />
           <p className="mt-4 text-sm leading-relaxed">
             The workshop system that keeps customers coming back, built on a verified service
             record for every car. For garages and service bays first, and everyone around them.
           </p>
-          <p className="mt-4 text-xs text-navy-500">Coming soon to Accra, Ghana.</p>
+          <p className="mt-4 text-xs text-navy-500">
+            Revvo is a product of GoyaCare Limited. Coming soon to Accra, Ghana.
+          </p>
         </div>
         {COLUMNS.map((col) => (
           <div key={col.title}>
@@ -67,7 +69,7 @@ export function SiteFooter() {
       </div>
       <div className="relative border-t border-white/10">
         <div className="container-x flex flex-col gap-2 py-6 text-xs text-navy-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Revvo. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} GoyaCare Limited. Revvo and the Revvo logo are trademarks of GoyaCare Limited. All rights reserved.</p>
           <p>Payments are processed by a licensed provider. Revvo never stores card or mobile money details.</p>
         </div>
       </div>

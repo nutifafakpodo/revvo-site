@@ -33,7 +33,7 @@ export function CtaBand({
                 </ButtonLink>
               </div>
             </div>
-            <Traffic scope="container" size="sm" className="h-24" />
+            <Traffic scope="container" size="sm" offset={1} className="h-24" />
           </div>
         </Reveal>
       </div>

@@ -1,3 +1,5 @@
+import * as React from "react";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 export type VehicleKind =
@@ -293,99 +295,92 @@ export function Car(props: { className?: string; spinning?: boolean }) {
   return <Vehicle kind="sedan" {...props} />;
 }
 
-type Lane = {
-  kind: VehicleKind;
-  dark: string;
-  light: string;
-  /** Desktop delay, phone delay (phones show fewer vehicles so they stay spaced). */
-  delay: string;
-  /** Static position under reduced motion. */
-  rest: string;
-  phone?: boolean;
-};
+type Look = { kind: VehicleKind; dark: string; light: string };
 
-const NEAR: Lane[] = [
-  { kind: "sedan", dark: "text-teal-500", light: "text-teal-500/90", delay: "[animation-delay:0s]", rest: "motion-reduce:left-[6%]", phone: true },
-  { kind: "suv", dark: "text-teal-300", light: "text-navy-700/80", delay: "[animation-delay:-5.4s]", rest: "motion-reduce:left-[24%]" },
-  { kind: "taxi", dark: "text-navy-100", light: "text-navy-500/90", delay: "[animation-delay:-10.8s] max-sm:[animation-delay:-13.5s]", rest: "motion-reduce:left-[42%]", phone: true },
-  { kind: "van", dark: "text-navy-200", light: "text-teal-600/80", delay: "[animation-delay:-16.2s]", rest: "motion-reduce:left-[60%]" },
-  { kind: "hatchback", dark: "text-teal-400", light: "text-navy-600/80", delay: "[animation-delay:-21.6s]", rest: "motion-reduce:left-[78%]" },
+/* Two disjoint sets so the two cars on screen are never the same type. */
+const NEAR_SET: Look[] = [
+  { kind: "sedan", dark: "text-teal-500", light: "text-teal-500/90" },
+  { kind: "taxi", dark: "text-navy-100", light: "text-navy-500/90" },
+  { kind: "suv", dark: "text-teal-300", light: "text-navy-700/80" },
+  { kind: "hatchback", dark: "text-teal-400", light: "text-teal-600/80" },
+  { kind: "van", dark: "text-navy-200", light: "text-navy-600/80" },
 ];
-const FAR: Lane[] = [
-  { kind: "pickup", dark: "text-teal-400/70", light: "text-navy-500/60", delay: "[animation-delay:0s]", rest: "motion-reduce:left-[14%]", phone: true },
-  { kind: "minibus", dark: "text-navy-200/70", light: "text-teal-500/60", delay: "[animation-delay:-9s]", rest: "motion-reduce:left-[38%]" },
-  { kind: "motorbike", dark: "text-teal-300/70", light: "text-navy-700/60", delay: "[animation-delay:-18s]", rest: "motion-reduce:left-[58%]", phone: true },
-  { kind: "truck", dark: "text-navy-100/60", light: "text-navy-500/60", delay: "[animation-delay:-27s]", rest: "motion-reduce:left-[80%]" },
+const FAR_SET: Look[] = [
+  { kind: "pickup", dark: "text-teal-400/70", light: "text-navy-500/60" },
+  { kind: "minibus", dark: "text-navy-200/70", light: "text-teal-500/60" },
+  { kind: "motorbike", dark: "text-teal-300/70", light: "text-navy-700/60" },
+  { kind: "truck", dark: "text-navy-100/60", light: "text-navy-500/60" },
 ];
+
+/** One vehicle crossing on a loop; the type changes each time it leaves the screen. */
+function Mover({
+  set,
+  offset,
+  dark,
+  mirrored = false,
+  className,
+}: {
+  set: Look[];
+  offset: number;
+  dark: boolean;
+  mirrored?: boolean;
+  className: string;
+}) {
+  const [turn, setTurn] = useState(offset);
+  const v = set[turn % set.length];
+  const onIteration = (e: React.AnimationEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget && e.animationName.startsWith("drive")) setTurn((t) => t + 1);
+  };
+  return (
+    <div className={cn("absolute left-0", className, dark ? v.dark : v.light)} onAnimationIteration={onIteration}>
+      <Vehicle kind={v.kind} className={cn("w-full", mirrored && "-scale-x-100")} />
+    </div>
+  );
+}
 
 /**
- * Two lanes of mixed traffic along the bottom of a scene: sedans, an Accra
- * taxi, an SUV, a hatchback and a van drive right; a pickup, a trotro
- * minibus, an okada and a lorry drive left in the smaller far lane.
- * `scope` is "viewport" for full-bleed sections and "container" for a
- * rounded band whose width is not the viewport.
+ * A road along the bottom of a scene with two vehicles at a time, driving
+ * in opposite directions: a car in the near lane heading right and a
+ * smaller one in the far lane heading left. Each lane rotates through its
+ * own set of types (sedan, taxi, SUV, hatchback, van / pickup, trotro,
+ * okada, lorry) every time its vehicle leaves the screen. `scope` is
+ * "viewport" for full-bleed sections and "container" for a rounded band.
+ * `offset` staggers which vehicles go first so scenes on a page differ.
  */
 export function Traffic({
   tone = "dark",
   scope = "viewport",
   size = "md",
+  offset = 0,
   className,
 }: {
   tone?: "dark" | "light";
   scope?: "viewport" | "container";
   size?: "md" | "sm";
+  offset?: number;
   className?: string;
 }) {
   const dark = tone === "dark";
-  const fwd = scope === "viewport" ? "motion-safe:animate-drive" : "motion-safe:animate-drive-band";
-  const back = scope === "viewport" ? "motion-safe:animate-drive-back" : "motion-safe:animate-drive-band-back";
-  const nearW = size === "md" ? "w-[180px] sm:w-[250px]" : "w-[120px] sm:w-[150px]";
-  const farW = size === "md" ? "w-[110px] sm:w-[160px]" : "w-[80px] sm:w-[100px]";
+  const viewport = scope === "viewport";
+  const fwd = viewport ? "motion-safe:animate-drive" : "motion-safe:animate-drive-band";
+  const back = viewport ? "motion-safe:animate-drive-back" : "motion-safe:animate-drive-band-back";
+  const nearW = size === "md" ? "w-[190px] sm:w-[250px]" : "w-[120px] sm:w-[150px]";
+  const farW = size === "md" ? "w-[120px] sm:w-[160px]" : "w-[80px] sm:w-[100px]";
   const nearBottom = size === "md" ? "bottom-5" : "bottom-3";
   const farBottom = size === "md" ? "bottom-[3.4rem] sm:bottom-16" : "bottom-9 sm:bottom-10";
   const lineColor = dark ? "bg-white/15" : "bg-navy-700/15";
   const dash = dark ? "hsl(175 100% 55%)" : "hsl(220 50% 20%)";
   return (
     <div className={cn("pointer-events-none absolute inset-x-0 bottom-0 h-32", className)} aria-hidden="true">
-      {FAR.map((v) => (
-        <div
-          key={v.kind}
-          className={cn(
-            "absolute left-0",
-            farBottom,
-            farW,
-            back,
-            v.delay,
-            v.rest,
-            dark ? v.dark : v.light,
-            !v.phone && "max-sm:hidden",
-          )}
-        >
-          <Vehicle kind={v.kind} className="w-full -scale-x-100" />
-        </div>
-      ))}
+      {/* far lane: heads left, smaller and dimmer */}
+      <Mover set={FAR_SET} offset={offset} dark={dark} mirrored className={cn(farBottom, farW, back, "motion-reduce:left-[22%]")} />
       <div className={cn("absolute inset-x-0 bottom-6 h-px", lineColor)} />
       <div
         className="absolute inset-x-0 bottom-[11px] h-px bg-[length:48px_1px] bg-repeat-x opacity-30 motion-safe:animate-lane"
         style={{ backgroundImage: `linear-gradient(90deg, ${dash} 0 22px, transparent 22px 48px)` }}
       />
-      {NEAR.map((v) => (
-        <div
-          key={v.kind}
-          className={cn(
-            "absolute left-0",
-            nearBottom,
-            nearW,
-            fwd,
-            v.delay,
-            v.rest,
-            dark ? v.dark : v.light,
-            !v.phone && "max-sm:hidden",
-          )}
-        >
-          <Vehicle kind={v.kind} className="w-full" />
-        </div>
-      ))}
+      {/* near lane: heads right */}
+      <Mover set={NEAR_SET} offset={offset} dark={dark} className={cn(nearBottom, nearW, fwd, "motion-reduce:left-[60%]")} />
     </div>
   );
 }

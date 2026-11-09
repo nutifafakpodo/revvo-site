@@ -184,10 +184,10 @@
 @utility animate-rotate-slow-reverse { animation: rotate-slow-reverse 14s linear infinite; }
 @utility animate-swing { animation: swing 4s ease-in-out infinite; }
 @utility animate-roll { animation: roll 5s ease-in-out infinite; }
-@utility animate-drive { animation: drive 27s linear infinite; }
-@utility animate-drive-back { animation: drive-back 36s linear infinite; }
-@utility animate-drive-band { animation: drive-band 24s linear infinite; }
-@utility animate-drive-band-back { animation: drive-band-back 32s linear infinite; }
+@utility animate-drive { animation: drive 18s linear infinite; }
+@utility animate-drive-back { animation: drive-back 24s linear infinite; }
+@utility animate-drive-band { animation: drive-band 16s linear infinite; }
+@utility animate-drive-band-back { animation: drive-band-back 22s linear infinite; }
 @utility animate-lane { animation: lane 0.6s linear infinite; }
 @utility animate-marquee { animation: marquee 45s linear infinite; }
 @utility animate-nudge-x { animation: nudge-x 1.6s ease-in-out infinite; }
