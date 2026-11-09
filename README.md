@@ -50,8 +50,10 @@ published form's page source as `entry.NNN`).
 Import the repo or run `vercel --prod`. Set the `VITE_*` variables in the
 project settings.
 
-**GitHub Pages.** `.github/workflows/pages.yml` builds with
-`BASE_PATH=/<repo>/` and publishes `dist` on every push to `main`. Set the
+**GitHub Pages.** `.github/workflows/pages.yml` builds at the root path and
+publishes `dist` on every push to `main`, served at the custom domain
+https://revvo.site (apex A/AAAA records and a `www` CNAME at Cloudflare,
+DNS-only, pointing at GitHub Pages). Set the
 `VITE_*` values as repository *variables* (Settings → Secrets and variables →
 Actions → Variables). `index.html` is copied to `404.html` so client-side
 routes survive a hard refresh.

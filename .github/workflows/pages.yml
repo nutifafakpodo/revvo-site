@@ -28,10 +28,10 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm typecheck
-      # Project sites are served from /<repo>/, so the build needs that base path.
+      # Served at the custom domain root (https://revvo.site), so no sub-path.
       - run: pnpm build
         env:
-          BASE_PATH: /${{ github.event.repository.name }}/
+          BASE_PATH: /
           VITE_CONSUMER_APP_URL: ${{ vars.VITE_CONSUMER_APP_URL }}
           VITE_BUSINESS_APP_URL: ${{ vars.VITE_BUSINESS_APP_URL }}
           VITE_ADMIN_APP_URL: ${{ vars.VITE_ADMIN_APP_URL }}
