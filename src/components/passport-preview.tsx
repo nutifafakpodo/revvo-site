@@ -1,4 +1,4 @@
-import { BadgeCheck, Bell, Gauge, QrCode, Share2, Wrench } from "lucide-react";
+import { BadgeCheck, Bell, Gauge, QrCode, Share2, Sparkles, Wrench } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const SERVICES = [
@@ -9,7 +9,8 @@ const SERVICES = [
 
 /**
  * Illustrative vehicle passport, modelled on the demo Corolla record. Purely
- * presentational: it shows what a shared passport looks like.
+ * presentational: it shows what a shared passport looks like. A "new record"
+ * chip and the reminder bell move gently to make it feel live.
  */
 export function PassportPreview({
   className,
@@ -48,26 +49,35 @@ export function PassportPreview({
         </div>
         <div className="mt-3 flex items-end justify-between gap-4">
           <div>
-            <p className="text-lg font-bold leading-tight">2019 Toyota Corolla</p>
+            <p className="text-base font-bold leading-tight sm:text-lg">2019 Toyota Corolla</p>
             <p className="text-sm text-navy-200">GLi · 1.8L · Silver</p>
           </div>
           <div
-            className="max-w-[10rem] truncate rounded-md border border-white/20 bg-white/10 px-2.5 py-1 font-mono text-sm font-semibold tracking-wider"
+            className="max-w-[10rem] shrink-0 truncate rounded-md border border-white/20 bg-white/10 px-2.5 py-1 font-mono text-xs font-semibold tracking-wider sm:text-sm"
             data-testid="passport-plate"
           >
             {plate}
           </div>
         </div>
-        <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-teal-500/20 px-2.5 py-1 text-xs font-semibold text-teal-300">
-          <BadgeCheck className="size-3.5" />
-          12 verified services · 2 workshops
+        <div className="mt-4 flex items-center justify-between gap-3">
+          <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-teal-500/20 px-2.5 py-1 text-xs font-semibold text-teal-300">
+            <BadgeCheck className="size-3.5" />
+            12 verified services · 2 workshops
+          </span>
+          <span
+            className="hidden items-center gap-1.5 whitespace-nowrap rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-white opacity-0 motion-safe:animate-toast motion-reduce:opacity-100 sm:inline-flex"
+            aria-hidden="true"
+          >
+            <Sparkles className="size-3 text-teal-300" />
+            New record verified
+          </span>
         </div>
       </div>
 
       <div className="grid grid-cols-3 divide-x divide-border border-b border-border text-center">
         <Stat icon={Wrench} label="Last service" value="Aug 2026" />
         <Stat icon={Gauge} label="Mileage" value="84,210 km" />
-        <Stat icon={Bell} label="Next due" value="Nov 2026" />
+        <Stat icon={Bell} label="Next due" value="Nov 2026" iconClassName="motion-safe:animate-wiggle" />
       </div>
 
       <ol className="divide-y divide-border">
@@ -100,14 +110,16 @@ function Stat({
   icon: Icon,
   label,
   value,
+  iconClassName,
 }: {
   icon: React.ComponentType<{ className?: string }>;
   label: string;
   value: string;
+  iconClassName?: string;
 }) {
   return (
     <div className="px-2 py-3">
-      <Icon className="mx-auto size-4 text-teal-600" />
+      <Icon className={cn("mx-auto size-4 text-teal-600", iconClassName)} />
       <p className="mt-1 text-sm font-semibold">{value}</p>
       <p className="text-[11px] text-muted-foreground">{label}</p>
     </div>

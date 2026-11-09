@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight,
@@ -28,7 +29,16 @@ import { INTEREST_ANCHOR } from "@/lib/links";
 import { ComingSoonBadge } from "@/components/coming-soon";
 import { HeroScene } from "@/components/motion/hero-scene";
 import { ToolBoard } from "@/components/motion/tool-board";
+import { Marquee } from "@/components/motion/marquee";
+import { SmsPhone } from "@/components/motion/sms-phone";
+import { Stagger, StaggerItem } from "@/components/motion/stagger";
 import { usePageMeta } from "@/lib/seo";
+
+const OUTCOMES = [
+  { icon: Timer, text: "Log a service in under a minute on any phone, tablet or laptop." },
+  { icon: Repeat, text: "Customers get proof by SMS and a reminder that brings them back." },
+  { icon: BadgeCheck, text: "Every record carries your workshop's name and a verified badge." },
+];
 
 const PAINS = [
   {
@@ -95,38 +105,49 @@ export default function Home() {
       <section className="relative -mt-16 overflow-hidden bg-navy-700 pt-16 text-white">
         <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
         <div
-          className="pointer-events-none absolute -left-32 top-24 size-96 rounded-full bg-teal-500/25 blur-3xl"
+          className="pointer-events-none absolute -left-32 top-24 size-96 rounded-full bg-teal-500/25 blur-3xl motion-safe:animate-drift"
           aria-hidden="true"
         />
         <div
-          className="pointer-events-none absolute -bottom-40 right-0 size-[28rem] rounded-full bg-navy-500/40 blur-3xl"
+          className="pointer-events-none absolute -bottom-40 right-0 size-[28rem] rounded-full bg-navy-500/40 blur-3xl motion-safe:animate-drift [animation-delay:-8s]"
           aria-hidden="true"
         />
         <HeroScene />
-        <div className="container-x relative z-10 grid items-center gap-12 pb-36 pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:pb-40 lg:pt-28">
-          <div>
-            <ComingSoonBadge light />
-            <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-teal-300">
-              For garages & service bays
-            </p>
-            <Heading as="h1" className="mt-3 text-white">
-              Log the job once. <span className="text-teal-300">Keep the customer for years.</span>
-            </Heading>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-navy-200">
-              Revvo turns every service you log into a verified record for the customer's car, a
-              customer in your CRM, and a reminder that brings them back to your bay. Built for
-              workshops in Accra.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div className="container-x relative z-10 grid items-center gap-12 pb-36 pt-16 lg:grid-cols-[1.1fr_0.9fr] lg:pb-40 lg:pt-24">
+          <Stagger>
+            <StaggerItem>
+              <ComingSoonBadge light />
+            </StaggerItem>
+            <StaggerItem>
+              <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-teal-300">
+                For garages & service bays
+              </p>
+            </StaggerItem>
+            <StaggerItem>
+              <Heading as="h1" className="mt-3 text-white">
+                <span className="block">Log the job once.</span>
+                <span className="block bg-gradient-to-r from-teal-300 to-teal-400 bg-clip-text text-transparent">
+                  Keep the customer for years.
+                </span>
+              </Heading>
+            </StaggerItem>
+            <StaggerItem>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-navy-200">
+                Revvo turns every service you log into a verified record for the customer's car, a
+                customer in your CRM, and a reminder that brings them back to your bay. Built for
+                workshops in Accra.
+              </p>
+            </StaggerItem>
+            <StaggerItem className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="lg" data-testid="hero-interest">
                 Register your workshop <ArrowRight />
               </ButtonLink>
               <ButtonLink href="#how-it-works" variant="inverse" size="lg">
                 See how it works
               </ButtonLink>
-            </div>
-          </div>
-          <Reveal className="flex flex-col items-center lg:items-end" delay={0.15}>
+            </StaggerItem>
+          </Stagger>
+          <Reveal className="flex flex-col items-center lg:items-end" delay={0.3}>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-navy-200">
               What your customer receives after every job
             </p>
@@ -137,19 +158,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Outcomes strip */}
+      {/* Outcomes strip + module ticker */}
       <section className="border-b border-border bg-card">
-        <div className="container-x grid gap-6 py-8 sm:grid-cols-3">
-          {[
-            { icon: Timer, text: "Log a service in under a minute on any phone, tablet or laptop." },
-            { icon: Repeat, text: "Customers get proof by SMS and a reminder that brings them back." },
-            { icon: BadgeCheck, text: "Every record carries your workshop's name and a verified badge." },
-          ].map(({ icon: Icon, text }) => (
-            <div key={text} className="flex items-start gap-3 text-sm text-muted-foreground">
-              <Icon className="mt-0.5 size-5 shrink-0 text-teal-600" />
-              <span>{text}</span>
-            </div>
+        <div className="container-x grid gap-8 py-10 sm:grid-cols-3">
+          {OUTCOMES.map(({ icon: Icon, text }, i) => (
+            <Reveal
+              key={text}
+              delay={i * 0.08}
+              className="group flex flex-col items-center gap-3 text-center text-sm leading-relaxed text-muted-foreground"
+            >
+              <IconBadge icon={Icon} tone="teal" className="size-10" />
+              <span className="max-w-xs">{text}</span>
+            </Reveal>
           ))}
+        </div>
+        <div className="border-t border-border bg-background py-4">
+          <Marquee items={WORKSHOP_FEATURES.map((f) => ({ icon: f.icon, label: f.title }))} />
         </div>
       </section>
 
@@ -179,46 +203,62 @@ export default function Home() {
           title="One log at the bay. A customer who keeps coming back."
           lede="The loop is simple, and it compounds: every job you log makes the passport more valuable to the owner, and the owner more likely to return to you."
         />
-        <ol className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:gap-4">
           {STEPS.map((step, i) => (
-            <Reveal key={step.title} delay={i * 0.08}>
-              <Card className="h-full">
-                <div className="flex items-center justify-between">
-                  <IconBadge icon={step.icon} tone="teal" />
-                  <span className="font-mono text-sm text-muted-foreground">0{i + 1}</span>
+            <Fragment key={step.title}>
+              {i > 0 && (
+                <div className="hidden items-center md:flex" aria-hidden="true">
+                  <ArrowRight
+                    className="size-6 text-teal-500 motion-safe:animate-nudge-x"
+                    style={{ animationDelay: `${i * 0.5}s` }}
+                  />
                 </div>
-                <h3 className="mt-5 text-lg font-bold">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
-              </Card>
-            </Reveal>
+              )}
+              <Reveal delay={i * 0.1}>
+                <Card className="h-full">
+                  <div className="flex items-center justify-between">
+                    <IconBadge icon={step.icon} tone="teal" />
+                    <span className="flex size-8 items-center justify-center rounded-full bg-navy-700 font-mono text-xs font-bold text-white">
+                      {i + 1}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 text-lg font-bold">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
+                </Card>
+              </Reveal>
+            </Fragment>
           ))}
-        </ol>
+        </div>
       </Section>
 
       {/* Workshop product */}
       <Section id="workshop">
-        <div className="grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="lg:sticky lg:top-24">
-            <Eyebrow>Revvo Business</Eyebrow>
-            <Heading>Everything a busy bay needs. Nothing it doesn't.</Heading>
-            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              A service log, invoices with payment links, a CRM, reminders, loyalty, promotions,
-              analytics and parts ordering in one workspace. It only shows the modules a workshop uses.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={INTEREST_ANCHOR} variant="secondary">
-                Register your workshop <ArrowRight />
-              </ButtonLink>
-              <ButtonLink href="/businesses#garages" variant="outline">
-                Full workshop details
-              </ButtonLink>
-            </div>
-            <ToolBoard className="mt-10" />
+            <Reveal>
+              <Eyebrow>Revvo Business</Eyebrow>
+              <Heading>Everything a busy bay needs. Nothing it doesn't.</Heading>
+              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                A service log, invoices with payment links, a CRM, reminders, loyalty, promotions,
+                analytics and parts ordering in one workspace. It only shows the modules a workshop uses.
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <ButtonLink href={INTEREST_ANCHOR} variant="secondary">
+                  Register your workshop <ArrowRight />
+                </ButtonLink>
+                <ButtonLink href="/businesses#garages" variant="outline">
+                  Full workshop details
+                </ButtonLink>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <ToolBoard className="mt-10 max-w-none" />
+            </Reveal>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {WORKSHOP_FEATURES.map((f, i) => (
               <Reveal key={f.title} delay={(i % 2) * 0.06}>
-                <Card className="h-full p-5 transition-all hover:-translate-y-0.5 hover:border-teal-400 hover:shadow-float/20">
+                <Card className="h-full p-5">
                   <IconBadge icon={f.icon} tone="teal" className="size-10" />
                   <h3 className="mt-4 font-bold">{f.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
@@ -230,28 +270,39 @@ export default function Home() {
       </Section>
 
       {/* Customer side */}
-      <Section className="bg-navy-900 text-white" id="customers">
-        <SectionHeader
-          eyebrow="What your customers get"
-          title="A passport they will actually use, with your name on every record."
-          lede="Your customers get a permanent, verified history of their car that reminds them what is due and proves it was looked after when they sell. Every entry points back to the workshop that did the work."
-          dark
-        />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {CUSTOMER_SIDE.map((f, i) => (
-            <Reveal key={f.title} delay={(i % 4) * 0.06}>
-              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-5">
-                <IconBadge icon={f.icon} tone="light" className="size-10" />
-                <h3 className="mt-4 font-bold">{f.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-navy-200">{f.body}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <div className="mt-10">
-          <ButtonLink href="/drivers" variant="inverse">
-            See the driver experience <ArrowRight />
-          </ButtonLink>
+      <Section className="bg-navy-900 text-white" id="customers" decor="dark">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+          <div>
+            <SectionHeader
+              align="left"
+              dark
+              className="mb-8"
+              eyebrow="What your customers get"
+              title="A passport they will actually use, with your name on every record."
+              lede="Your customers get a permanent, verified history of their car that reminds them what is due and proves it was looked after when they sell. Every entry points back to the workshop that did the work."
+            />
+            <div className="grid gap-4 sm:grid-cols-2">
+              {CUSTOMER_SIDE.map((f, i) => (
+                <Reveal key={f.title} delay={(i % 2) * 0.06}>
+                  <div className="group h-full rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:border-teal-400/40 hover:bg-white/[0.08]">
+                    <IconBadge icon={f.icon} tone="light" className="size-10" />
+                    <h3 className="mt-4 font-bold">{f.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-navy-200">{f.body}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <div className="mt-8">
+              <ButtonLink href="/drivers" variant="inverse">
+                See the driver experience <ArrowRight />
+              </ButtonLink>
+            </div>
+          </div>
+          <Reveal delay={0.15} className="flex justify-center lg:justify-end">
+            <div className="motion-safe:animate-float [animation-duration:10s]">
+              <SmsPhone />
+            </div>
+          </Reveal>
         </div>
       </Section>
 
@@ -267,7 +318,7 @@ export default function Home() {
             <Reveal key={a.id} delay={(i % 3) * 0.06}>
               <Link
                 href={`/businesses#${a.id}`}
-                className="group flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-card transition-colors hover:border-teal-400"
+                className="group flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-card transition-[transform,box-shadow,border-color] duration-300 hover:border-teal-400/60 hover:shadow-lift motion-safe:hover:-translate-y-1"
                 data-testid={`audience-${a.id}`}
               >
                 <IconBadge icon={a.icon} className="size-10" />
@@ -284,7 +335,7 @@ export default function Home() {
           <Reveal delay={0.12}>
             <Link
               href="/drivers"
-              className="group flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-card transition-colors hover:border-teal-400"
+              className="group flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-card transition-[transform,box-shadow,border-color] duration-300 hover:border-teal-400/60 hover:shadow-lift motion-safe:hover:-translate-y-1"
               data-testid="audience-drivers"
             >
               <IconBadge icon={DRIVER_AUDIENCE.icon} className="size-10" />
@@ -302,7 +353,7 @@ export default function Home() {
 
       {/* FAQ */}
       <Section className="bg-muted/60" id="faq">
-        <SectionHeader eyebrow="Questions from workshops" title="Straight answers." align="center" />
+        <SectionHeader eyebrow="Questions from workshops" title="Straight answers." />
         <Faq />
       </Section>
 

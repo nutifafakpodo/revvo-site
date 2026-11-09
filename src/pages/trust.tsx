@@ -1,9 +1,9 @@
 import { Check, EyeOff, Fingerprint, History, KeyRound, Lock, ShieldCheck, Timer, X } from "lucide-react";
-import { Card, Eyebrow, Heading, IconBadge, Section, SectionHeader } from "@/components/section";
+import { Card, Heading, IconBadge, Section, SectionHeader } from "@/components/section";
 import { CtaBand } from "@/components/cta-band";
 import { Reveal } from "@/components/reveal";
 import { usePageMeta } from "@/lib/seo";
-import { ComingSoonBadge } from "@/components/coming-soon";
+import { PageHero } from "@/components/page-hero";
 
 const PRINCIPLES = [
   {
@@ -56,23 +56,13 @@ export default function Trust() {
 
   return (
     <>
-      <section className="border-b border-border bg-card">
-        <div className="container-x py-16 sm:py-20">
-          <div className="mb-4">
-            <ComingSoonBadge />
-          </div>
-          <Eyebrow>Trust & privacy</Eyebrow>
-          <Heading as="h1" className="max-w-3xl">
-            A record is only useful if it can be trusted. And only fair if it protects the owner.
-          </Heading>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            These are the rules Revvo is built on. They are enforced in the API, not just in the
-            interface, and they are tested before every release.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Trust & privacy"
+        title="A record is only useful if it can be trusted. And only fair if it protects the owner."
+        lede="These are the rules Revvo is built on. They are enforced in the API, not just in the interface, and they are tested before every release."
+      />
 
-      <Section>
+      <Section id="principles">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {PRINCIPLES.map((p, i) => (
             <Reveal key={p.title} delay={(i % 3) * 0.06}>
@@ -86,13 +76,13 @@ export default function Trust() {
         </div>
       </Section>
 
-      <Section className="bg-muted/60">
+      <Section className="bg-muted/60" id="visibility">
         <SectionHeader
           eyebrow="What a shared passport shows"
           title="Public sees the car. The owner sees everything."
           lede="Anyone with a passport link or a plate can verify the vehicle and its service summary. Anything personal or financial requires the verified owner."
         />
-        <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-card">
+        <Reveal className="overflow-hidden rounded-2xl border border-border bg-card shadow-card">
           <table className="w-full text-left text-sm" data-testid="visibility-table">
             <thead className="bg-muted text-xs uppercase tracking-wider text-muted-foreground">
               <tr>
@@ -115,11 +105,11 @@ export default function Trust() {
               ))}
             </tbody>
           </table>
-        </div>
+        </Reveal>
       </Section>
 
-      <Section>
-        <div className="grid gap-10 lg:grid-cols-2">
+      <Section id="honesty">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
             <IconBadge icon={Lock} />
             <Heading className="mt-5">Pilot-stage honesty</Heading>

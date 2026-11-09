@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { ArrowRight, Menu, X } from "lucide-react";
+import { motion, useScroll } from "framer-motion";
 import { Logo } from "./logo";
 import { ButtonLink } from "./button";
 import { INTEREST_ANCHOR } from "@/lib/links";
@@ -19,6 +20,7 @@ export function SiteHeader() {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -86,6 +88,13 @@ export function SiteHeader() {
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </div>
+
+      {/* reading progress */}
+      <motion.div
+        className="absolute inset-x-0 -bottom-px h-0.5 origin-left bg-teal-500"
+        style={{ scaleX: scrollYProgress }}
+        aria-hidden="true"
+      />
 
       {open && (
         <div id="mobile-nav" className="border-t border-border bg-background md:hidden">

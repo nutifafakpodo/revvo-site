@@ -36,6 +36,7 @@
   --radius-2xl: 1.5rem;
 
   --shadow-card: 0 1px 2px hsl(220 45% 15% / 0.05), 0 12px 32px -12px hsl(220 45% 15% / 0.14);
+  --shadow-lift: 0 2px 6px -2px hsl(220 45% 15% / 0.08), 0 18px 40px -18px hsl(220 45% 15% / 0.28);
   --shadow-float: 0 24px 60px -20px hsl(220 50% 10% / 0.45), 0 4px 12px -4px hsl(220 50% 10% / 0.25);
 }
 
@@ -75,12 +76,21 @@
   .text-balance {
     text-wrap: balance;
   }
+  .fade-x {
+    mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  }
 }
 
 /* ── Motion ───────────────────────────────────────────────────────────── */
+/* Every animated element opts in with `motion-safe:` so reduced-motion
+   users get a static layout. */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
+}
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(28px, -22px); }
 }
 @keyframes rotate-slow {
   to { transform: rotate(360deg); }
@@ -101,19 +111,81 @@
   from { transform: translateX(-120%); }
   to { transform: translateX(calc(100vw + 20%)); }
 }
+@keyframes drive-band {
+  from { left: -240px; }
+  to { left: 100%; }
+}
 @keyframes lane {
   from { background-position-x: 0; }
   to { background-position-x: -48px; }
 }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes nudge-x {
+  0%, 100% { transform: translateX(0); opacity: 0.6; }
+  50% { transform: translateX(6px); opacity: 1; }
+}
+@keyframes toast {
+  0%, 100% { opacity: 0; transform: translateY(6px); }
+  8%, 45% { opacity: 1; transform: translateY(0); }
+  55% { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes wiggle {
+  0%, 70%, 100% { transform: rotate(0); }
+  75% { transform: rotate(-14deg); }
+  80% { transform: rotate(12deg); }
+  85% { transform: rotate(-8deg); }
+  90% { transform: rotate(4deg); }
+}
+@keyframes puff {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  15% { opacity: 0.4; }
+  100% { opacity: 0; transform: translate(-30px, -16px) scale(1.8); }
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.5px); }
+}
+/* SMS conversation: four bubbles appear in turn, hold, then clear together. */
+@keyframes bubble-1 {
+  0% { opacity: 0; transform: translateY(8px); }
+  4%, 86% { opacity: 1; transform: translateY(0); }
+  92%, 100% { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes bubble-2 {
+  0%, 13% { opacity: 0; transform: translateY(8px); }
+  17%, 86% { opacity: 1; transform: translateY(0); }
+  92%, 100% { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes bubble-3 {
+  0%, 26% { opacity: 0; transform: translateY(8px); }
+  30%, 86% { opacity: 1; transform: translateY(0); }
+  92%, 100% { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes bubble-4 {
+  0%, 39% { opacity: 0; transform: translateY(8px); }
+  43%, 86% { opacity: 1; transform: translateY(0); }
+  92%, 100% { opacity: 0; transform: translateY(-4px); }
+}
 
 @utility animate-float { animation: float 6s ease-in-out infinite; }
+@utility animate-drift { animation: drift 16s ease-in-out infinite; }
 @utility animate-rotate-slow { animation: rotate-slow 14s linear infinite; }
 @utility animate-rotate-slow-reverse { animation: rotate-slow-reverse 14s linear infinite; }
 @utility animate-swing { animation: swing 4s ease-in-out infinite; }
 @utility animate-roll { animation: roll 5s ease-in-out infinite; }
 @utility animate-drive { animation: drive 22s linear infinite; }
+@utility animate-drive-band { animation: drive-band 20s linear infinite; }
 @utility animate-lane { animation: lane 0.6s linear infinite; }
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-drive { animation: none; transform: translateX(62vw); }
-}
+@utility animate-marquee { animation: marquee 45s linear infinite; }
+@utility animate-nudge-x { animation: nudge-x 1.6s ease-in-out infinite; }
+@utility animate-toast { animation: toast 9s ease-in-out infinite; }
+@utility animate-wiggle { animation: wiggle 6s ease-in-out infinite; transform-origin: 50% 0; }
+@utility animate-puff { animation: puff 1.5s ease-out infinite; }
+@utility animate-bob { animation: bob 0.55s ease-in-out infinite; }
+@utility animate-bubble-1 { animation: bubble-1 12s ease-in-out infinite both; }
+@utility animate-bubble-2 { animation: bubble-2 12s ease-in-out infinite both; }
+@utility animate-bubble-3 { animation: bubble-3 12s ease-in-out infinite both; }
+@utility animate-bubble-4 { animation: bubble-4 12s ease-in-out infinite both; }

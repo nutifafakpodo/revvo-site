@@ -4,6 +4,8 @@ import { Button } from "./button";
 import { Eyebrow, Heading } from "./section";
 import { INTEREST_FORM } from "@/lib/links";
 import { cn } from "@/lib/utils";
+import { FloatingParts } from "./motion/parts";
+import { Reveal } from "./reveal";
 
 type Values = {
   type: string;
@@ -71,21 +73,29 @@ export function InterestForm() {
   return (
     <section
       id="interest"
-      className="scroll-mt-16 border-t border-border bg-muted/60 py-16 sm:py-24"
+      className="relative scroll-mt-16 overflow-clip border-t border-border bg-muted/60 py-16 sm:py-24"
       data-testid="interest-form"
     >
-      <div className="container-x grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-        <div className="lg:sticky lg:top-24 lg:self-start">
+      <FloatingParts variant={1} />
+      <div className="container-x relative grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <Reveal className="lg:sticky lg:top-24 lg:self-start">
           <Eyebrow>Register your interest</Eyebrow>
           <Heading>Get your workshop on Revvo first.</Heading>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             Run a garage or service bay? Leave your details and we will set you up in the first
             Accra cohort. Parts sellers, dealers, insurers, fleets and drivers are welcome too.
           </p>
-          <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
-            <li>Workshops: early access, onboarding on site, passport QR cards for your customers.</li>
-            <li>Everyone else: we will contact you as your part of Revvo opens.</li>
-            <li>No spam. We only use your details to tell you about Revvo.</li>
+          <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
+            {[
+              "Workshops: early access, onboarding on site, passport QR cards for your customers.",
+              "Everyone else: we will contact you as your part of Revvo opens.",
+              "No spam. We only use your details to tell you about Revvo.",
+            ].map((t) => (
+              <li key={t} className="flex items-start gap-3">
+                <Check className="mt-0.5 size-4 shrink-0 text-teal-600" />
+                <span>{t}</span>
+              </li>
+            ))}
           </ul>
           <a
             href={INTEREST_FORM.viewUrl}
@@ -96,9 +106,9 @@ export function InterestForm() {
           >
             Prefer Google Forms? Open it in a new tab <ExternalLink className="size-4" />
           </a>
-        </div>
+        </Reveal>
 
-        <div className="rounded-2xl border border-border bg-card p-6 shadow-card sm:p-8">
+        <Reveal delay={0.1} className="rounded-2xl border border-border bg-card p-6 shadow-card sm:p-8">
           {status.kind === "sent" ? (
             <div className="py-10 text-center" role="status" data-testid="interest-success">
               <span className="mx-auto flex size-12 items-center justify-center rounded-full bg-teal-100 text-teal-600">
@@ -167,7 +177,7 @@ export function InterestForm() {
               </div>
             </form>
           )}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

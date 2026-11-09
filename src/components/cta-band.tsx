@@ -1,5 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "./button";
+import { Reveal } from "./reveal";
+import { Car } from "./motion/car";
 import { INTEREST_ANCHOR } from "@/lib/links";
 
 export function CtaBand({
@@ -12,25 +14,38 @@ export function CtaBand({
   return (
     <section className="py-16 sm:py-24">
       <div className="container-x">
-        <div className="relative overflow-hidden rounded-3xl bg-navy-700 px-6 py-14 text-center text-white sm:px-12 sm:py-20">
-          <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
-          <div
-            className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-teal-500/30 blur-3xl"
-            aria-hidden="true"
-          />
-          <div className="relative mx-auto max-w-2xl">
-            <h2 className="text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h2>
-            <p className="mt-4 text-lg text-navy-200">{body}</p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="lg">
-                Register your workshop <ArrowRight />
-              </ButtonLink>
-              <ButtonLink href="/pilot" variant="inverse" size="lg">
-                About the pilot
-              </ButtonLink>
+        <Reveal>
+          <div className="relative overflow-hidden rounded-3xl bg-navy-700 px-6 pb-28 pt-14 text-center text-white sm:px-12 sm:pb-32 sm:pt-20">
+            <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
+            <div
+              className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-teal-500/30 blur-3xl motion-safe:animate-drift"
+              aria-hidden="true"
+            />
+            <div className="relative mx-auto max-w-2xl">
+              <h2 className="text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h2>
+              <p className="mt-4 text-lg text-navy-200">{body}</p>
+              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="lg">
+                  Register your workshop <ArrowRight />
+                </ButtonLink>
+                <ButtonLink href="/pilot" variant="inverse" size="lg">
+                  About the pilot
+                </ButtonLink>
+              </div>
+            </div>
+            {/* road along the bottom of the band */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20" aria-hidden="true">
+              <div className="absolute inset-x-0 bottom-5 h-px bg-white/15" />
+              <div
+                className="absolute inset-x-0 bottom-[9px] h-px bg-[length:48px_1px] bg-repeat-x opacity-30 motion-safe:animate-lane"
+                style={{ backgroundImage: "linear-gradient(90deg, hsl(175 100% 55%) 0 22px, transparent 22px 48px)" }}
+              />
+              <div className="absolute bottom-4 left-0 w-[200px] text-teal-400 motion-safe:animate-drive-band motion-reduce:left-[70%]">
+                <Car className="w-full" />
+              </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

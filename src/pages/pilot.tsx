@@ -1,7 +1,8 @@
 import { ArrowRight, Check } from "lucide-react";
 import { ButtonLink } from "@/components/button";
-import { Card, Eyebrow, Heading, Section } from "@/components/section";
-import { ComingSoonBadge } from "@/components/coming-soon";
+import { Fragment } from "react";
+import { Card, Section, SectionHeader } from "@/components/section";
+import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { INTEREST_ANCHOR } from "@/lib/links";
 import { usePageMeta } from "@/lib/seo";
@@ -35,32 +36,20 @@ export default function Pilot() {
 
   return (
     <>
-      <section className="border-b border-border bg-card">
-        <div className="container-x py-16 sm:py-20">
-          <div className="mb-4">
-            <ComingSoonBadge />
-          </div>
-          <Eyebrow>The Accra pilot · limited cohort</Eyebrow>
-          <Heading as="h1" className="max-w-3xl">
-            Be one of the first workshops in Accra to log verified services.
-          </Heading>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Before launch we are hand-picking a small group of garages and service bays in Accra to
-            run Revvo with us, alongside a few parts sellers and one insurer. Register your workshop
-            and we will be in touch before we open the doors.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="lg" data-testid="pilot-register">
-              Register your workshop <ArrowRight />
-            </ButtonLink>
-            <ButtonLink href="/businesses" variant="outline" size="lg">
-              What each business type gets
-            </ButtonLink>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="The Accra pilot · limited cohort"
+        title="Be one of the first workshops in Accra to log verified services."
+        lede="Before launch we are hand-picking a small group of garages and service bays in Accra to run Revvo with us, alongside a few parts sellers and one insurer. Register your workshop and we will be in touch before we open the doors."
+      >
+        <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="lg" data-testid="pilot-register">
+          Register your workshop <ArrowRight />
+        </ButtonLink>
+        <ButtonLink href="/businesses" variant="outline" size="lg">
+          What each business type gets
+        </ButtonLink>
+      </PageHero>
 
-      <Section>
+      <Section id="cohort">
         <div className="grid gap-6 lg:grid-cols-2">
           <Reveal>
             <Card className="h-full">
@@ -102,20 +91,34 @@ export default function Pilot() {
         </div>
       </Section>
 
-      <Section className="bg-muted/60">
-        <ol className="grid gap-6 md:grid-cols-3">
+      <Section className="bg-muted/60" id="how">
+        <SectionHeader
+          eyebrow="How the pilot runs"
+          title="Three steps from here to your first verified service."
+        />
+        <div className="grid gap-6 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:gap-4">
           {STEPS.map((s, i) => (
-            <Reveal key={s.n} delay={i * 0.08}>
-              <Card className="h-full">
-                <span className="flex size-9 items-center justify-center rounded-full bg-navy-700 font-mono text-sm font-bold text-white">
-                  {s.n}
-                </span>
-                <h3 className="mt-4 text-lg font-bold">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
-              </Card>
-            </Reveal>
+            <Fragment key={s.n}>
+              {i > 0 && (
+                <div className="hidden items-center md:flex" aria-hidden="true">
+                  <ArrowRight
+                    className="size-6 text-teal-500 motion-safe:animate-nudge-x"
+                    style={{ animationDelay: `${i * 0.5}s` }}
+                  />
+                </div>
+              )}
+              <Reveal delay={i * 0.1}>
+                <Card className="h-full">
+                  <span className="flex size-9 items-center justify-center rounded-full bg-navy-700 font-mono text-sm font-bold text-white">
+                    {s.n}
+                  </span>
+                  <h3 className="mt-4 text-lg font-bold">{s.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
+                </Card>
+              </Reveal>
+            </Fragment>
           ))}
-        </ol>
+        </div>
       </Section>
     </>
   );
