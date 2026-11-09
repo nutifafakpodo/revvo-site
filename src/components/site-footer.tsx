@@ -61,7 +61,7 @@ export function SiteFooter() {
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col gap-2 py-6 text-xs text-navy-500 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Revvo. All rights reserved.</p>
-          <p>Payments are request-based during the pilot. No card details are collected.</p>
+          <p>Payments are processed by a licensed provider. Revvo never stores card or mobile money details.</p>
         </div>
       </div>
     </footer>

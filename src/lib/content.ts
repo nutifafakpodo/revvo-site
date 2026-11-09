@@ -32,6 +32,7 @@ export const AUDIENCES: Audience[] = [
       "Every service you log becomes a verified passport entry for the customer's car, a customer record for you, and a reminder that brings them back.",
     points: [
       "Log a service in under a minute: plate, work done, mileage, parts used.",
+      "Itemised invoices with a payment link sent by SMS; customers pay by mobile money or card.",
       "Customer database and vehicle history built automatically from real jobs.",
       "Reminders and loyalty points that bring vehicles back to your bay.",
       "Dashboard and analytics: monthly volume, service mix, repeat activity, revenue.",
@@ -139,6 +140,10 @@ export const FAQ: { q: string; a: string }[] = [
   {
     q: "What makes a Revvo record \"verified\"?",
     a: "Only signed-in members of a registered workshop can create service records, and every record stores who created it and where. Owners cannot self-report history into the verified timeline, which is what makes it worth trusting, and what makes your name on it worth something.",
+  },
+  {
+    q: "How do customers pay?",
+    a: "When you finish a job, Revvo sends the customer an itemised invoice with a payment link by SMS. They pay by mobile money or card from their phone through a licensed payment provider, and the receipt is attached to the service on their passport. Revvo never stores card or mobile money details.",
   },
   {
     q: "Do my customers need to install an app?",

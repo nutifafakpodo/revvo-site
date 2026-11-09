@@ -37,8 +37,8 @@ export default function Businesses() {
             Built for the bay. Open to everyone around it.
           </Heading>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Garages and service bays are where Revvo starts: service logging, a CRM that fills
-            itself, reminders, loyalty and parts ordering. Parts sellers, dealerships, insurers and
+            Garages and service bays are where Revvo starts: service logging, invoices with payment
+            links, a CRM that fills itself, reminders, loyalty and parts ordering. Parts sellers, dealerships, insurers and
             fleets plug into the same verified vehicle records, and only see the modules they need.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

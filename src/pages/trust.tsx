@@ -130,9 +130,9 @@ export default function Trust() {
           </div>
           <ul className="space-y-4 text-sm leading-relaxed text-muted-foreground">
             <li className="rounded-xl border border-border bg-card p-5">
-              <strong className="text-foreground">Payments are request-based.</strong> Marketplace
-              orders and insurance renewals create a request that the seller or insurer confirms.
-              Revvo does not collect card details or move money during the pilot.
+              <strong className="text-foreground">Payments go through a licensed provider.</strong>{" "}
+              Service invoices and marketplace orders are paid by mobile money or card through a
+              regulated payment partner. Revvo never stores card or mobile money details.
             </li>
             <li className="rounded-xl border border-border bg-card p-5">
               <strong className="text-foreground">Insurance renewals are quotes and intent.</strong>{" "}

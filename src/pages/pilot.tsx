@@ -9,6 +9,7 @@ import { usePageMeta } from "@/lib/seo";
 const INCLUDED = [
   "Onboarding session for your team, on site or on a call.",
   "Passport QR cards and SMS invites for your customers.",
+  "Itemised invoices with payment links, paid by mobile money or card.",
   "Direct line to the product team; what you ask for shapes the roadmap.",
   "Verified partner badge on every record you log.",
 ];

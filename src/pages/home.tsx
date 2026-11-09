@@ -9,6 +9,7 @@ import {
   Megaphone,
   MessageSquare,
   QrCode,
+  Receipt,
   Repeat,
   ShoppingCart,
   Smartphone,
@@ -53,7 +54,7 @@ const STEPS = [
   {
     icon: MessageSquare,
     title: "Your customer gets the proof",
-    body: "An SMS lands with a link to their car's passport. The record is already there, marked verified, with your workshop's name on it.",
+    body: "An SMS lands with the itemised invoice, a payment link, and a link to their car's passport. The record is already there, marked verified, with your workshop's name on it.",
   },
   {
     icon: Repeat,
@@ -64,6 +65,7 @@ const STEPS = [
 
 const WORKSHOP_FEATURES = [
   { icon: ClipboardList, title: "Log service", body: "Verified records with parts, mileage and technician, in seconds. Attach marketplace parts straight from the job." },
+  { icon: Receipt, title: "Invoices & payment links", body: "Itemise parts and labour, then send the customer a payment link by SMS. They pay by mobile money or card, and the receipt sits on their passport." },
   { icon: Users, title: "Customers (CRM)", body: "Customers and their vehicles grouped from real jobs. Search, export to CSV, follow up." },
   { icon: Bell, title: "Reminders", body: "Automatic next-service reminders tied to real mileage and dates, sent under your name." },
   { icon: Gift, title: "Loyalty programme", body: "Points per visit and redeemable rewards that give customers a reason to return." },
@@ -78,7 +80,7 @@ const CUSTOMER_SIDE = [
   { icon: BadgeCheck, title: "A verified passport", body: "Every job you log appears with a verified badge and your workshop's name." },
   { icon: Bell, title: "Reminders that land", body: "Next oil change or inspection, based on the mileage you recorded." },
   { icon: Gift, title: "Rewards from you", body: "Loyalty progress per workshop, so returning to your bay pays off." },
-  { icon: Smartphone, title: "Nothing to install", body: "A link works in any browser. Claiming the car takes a one-time code." },
+  { icon: Smartphone, title: "Pay and claim from their phone", body: "The invoice is paid by mobile money or card from the link. Claiming the car takes a one-time code. Nothing to install." },
 ];
 
 export default function Home() {
@@ -200,8 +202,8 @@ export default function Home() {
             <Eyebrow>Revvo Business</Eyebrow>
             <Heading>Everything a busy bay needs. Nothing it doesn't.</Heading>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              A service log, a CRM, reminders, loyalty, promotions, analytics and parts ordering in
-              one workspace. It only shows the modules a workshop uses.
+              A service log, invoices with payment links, a CRM, reminders, loyalty, promotions,
+              analytics and parts ordering in one workspace. It only shows the modules a workshop uses.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={INTEREST_ANCHOR} variant="secondary">
@@ -213,9 +215,9 @@ export default function Home() {
             </div>
             <ToolBoard className="mt-10" />
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2">
             {WORKSHOP_FEATURES.map((f, i) => (
-              <Reveal key={f.title} delay={(i % 3) * 0.06}>
+              <Reveal key={f.title} delay={(i % 2) * 0.06}>
                 <Card className="h-full p-5 transition-all hover:-translate-y-0.5 hover:border-teal-400 hover:shadow-float/20">
                   <IconBadge icon={f.icon} tone="teal" className="size-10" />
                   <h3 className="mt-4 font-bold">{f.title}</h3>
