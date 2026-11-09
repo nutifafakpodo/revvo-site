@@ -111,9 +111,17 @@
   from { transform: translateX(-120%); }
   to { transform: translateX(calc(100vw + 20%)); }
 }
+@keyframes drive-back {
+  from { transform: translateX(calc(100vw + 20%)); }
+  to { transform: translateX(-120%); }
+}
 @keyframes drive-band {
-  from { left: -240px; }
+  from { left: -260px; }
   to { left: 100%; }
+}
+@keyframes drive-band-back {
+  from { left: 100%; }
+  to { left: -260px; }
 }
 @keyframes lane {
   from { background-position-x: 0; }
@@ -176,8 +184,10 @@
 @utility animate-rotate-slow-reverse { animation: rotate-slow-reverse 14s linear infinite; }
 @utility animate-swing { animation: swing 4s ease-in-out infinite; }
 @utility animate-roll { animation: roll 5s ease-in-out infinite; }
-@utility animate-drive { animation: drive 22s linear infinite; }
-@utility animate-drive-band { animation: drive-band 20s linear infinite; }
+@utility animate-drive { animation: drive 27s linear infinite; }
+@utility animate-drive-back { animation: drive-back 36s linear infinite; }
+@utility animate-drive-band { animation: drive-band 24s linear infinite; }
+@utility animate-drive-band-back { animation: drive-band-back 32s linear infinite; }
 @utility animate-lane { animation: lane 0.6s linear infinite; }
 @utility animate-marquee { animation: marquee 45s linear infinite; }
 @utility animate-nudge-x { animation: nudge-x 1.6s ease-in-out infinite; }

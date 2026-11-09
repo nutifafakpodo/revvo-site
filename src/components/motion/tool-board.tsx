@@ -1,5 +1,6 @@
 import { CircleDot, Cog, Fuel, Gauge, Hammer, Wrench } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BrakeDisc, ObdScanner } from "./parts";
 
 /**
  * A workshop pegboard with gently moving tools. Decorative; used beside the
@@ -30,15 +31,23 @@ export function ToolBoard({ className }: { className?: string }) {
       <div className="absolute left-[12%] top-[14%] origin-top motion-safe:animate-swing">
         <Wrench className="size-16 text-teal-300 drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)]" strokeWidth={1.75} />
       </div>
+      {/* OBD scanner hanging by its cable */}
+      <div className="absolute left-[58%] top-[10%] origin-top motion-safe:animate-swing [animation-duration:6.5s] [animation-delay:-3s]">
+        <ObdScanner className="h-24 w-16 text-teal-200 drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)]" strokeWidth={1.6} />
+      </div>
+      {/* brake disc on the shelf */}
+      <div className="absolute bottom-[14%] left-[30%] motion-safe:animate-rotate-slow [animation-duration:16s]">
+        <BrakeDisc className="size-12 text-white/70" strokeWidth={1.6} />
+      </div>
       {/* hammer, slower swing */}
       <div className="absolute left-[36%] top-[12%] origin-top motion-safe:animate-swing [animation-duration:5.5s] [animation-delay:-1.5s]">
         <Hammer className="size-14 text-white/80 drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)]" strokeWidth={1.75} />
       </div>
       {/* gears */}
-      <div className="absolute right-[14%] top-[16%] motion-safe:animate-rotate-slow">
+      <div className="absolute right-[6%] top-[12%] motion-safe:animate-rotate-slow">
         <Cog className="size-16 text-teal-400" strokeWidth={1.75} />
       </div>
-      <div className="absolute right-[30%] top-[42%] motion-safe:animate-rotate-slow-reverse [animation-duration:9s]">
+      <div className="absolute right-[22%] top-[40%] motion-safe:animate-rotate-slow-reverse [animation-duration:9s]">
         <Cog className="size-10 text-white/70" strokeWidth={1.75} />
       </div>
       {/* gauge needle bob */}
@@ -46,7 +55,7 @@ export function ToolBoard({ className }: { className?: string }) {
         <Gauge className="size-12 text-white/80" strokeWidth={1.75} />
       </div>
       {/* tyre rolling on the shelf */}
-      <div className="absolute bottom-[16%] left-[44%] motion-safe:animate-roll">
+      <div className="absolute bottom-[16%] left-[50%] motion-safe:animate-roll">
         <CircleDot className="size-14 text-white" strokeWidth={1.75} />
       </div>
       <div className="absolute bottom-[20%] right-[12%] motion-safe:animate-float [animation-delay:-2s]">

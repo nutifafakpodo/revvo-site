@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Logo } from "./logo";
-import { Car } from "./motion/car";
+import { Traffic } from "./motion/car";
 import { FloatingParts } from "./motion/parts";
 import { CONTACT_EMAIL, INTEREST_ANCHOR } from "@/lib/links";
 
@@ -32,11 +32,8 @@ export function SiteFooter() {
     <footer className="relative overflow-clip border-t border-border bg-navy-950 text-navy-200">
       <FloatingParts tone="dark" variant={2} />
       {/* a quiet road along the top edge */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-16" aria-hidden="true">
-        <div className="absolute inset-x-0 top-12 h-px bg-white/10" />
-        <div className="absolute left-0 top-1 w-[130px] text-teal-500/70 motion-safe:animate-drive [animation-duration:38s] motion-reduce:left-[65%]">
-          <Car className="w-full" />
-        </div>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 opacity-80" aria-hidden="true">
+        <Traffic size="sm" className="h-20" />
       </div>
       <div className="container-x relative grid gap-10 pb-14 pt-24 md:grid-cols-[1.6fr_1fr_1fr]">
         <div className="max-w-xs">

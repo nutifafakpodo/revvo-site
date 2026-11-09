@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "./button";
 import { Reveal } from "./reveal";
-import { Car } from "./motion/car";
+import { Traffic } from "./motion/car";
 import { INTEREST_ANCHOR } from "@/lib/links";
 
 export function CtaBand({
@@ -33,17 +33,7 @@ export function CtaBand({
                 </ButtonLink>
               </div>
             </div>
-            {/* road along the bottom of the band */}
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20" aria-hidden="true">
-              <div className="absolute inset-x-0 bottom-5 h-px bg-white/15" />
-              <div
-                className="absolute inset-x-0 bottom-[9px] h-px bg-[length:48px_1px] bg-repeat-x opacity-30 motion-safe:animate-lane"
-                style={{ backgroundImage: "linear-gradient(90deg, hsl(175 100% 55%) 0 22px, transparent 22px 48px)" }}
-              />
-              <div className="absolute bottom-4 left-0 w-[200px] text-teal-400 motion-safe:animate-drive-band motion-reduce:left-[70%]">
-                <Car className="w-full" />
-              </div>
-            </div>
+            <Traffic scope="container" size="sm" className="h-24" />
           </div>
         </Reveal>
       </div>
