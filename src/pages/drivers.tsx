@@ -16,6 +16,7 @@ import { PassportPreview } from "@/components/passport-preview";
 import { Reveal } from "@/components/reveal";
 import { INTEREST_ANCHOR } from "@/lib/links";
 import { ComingSoonBadge } from "@/components/coming-soon";
+import { HeroScene } from "@/components/motion/hero-scene";
 import { usePageMeta } from "@/lib/seo";
 
 const FEATURES = [
@@ -46,9 +47,12 @@ export default function Drivers() {
     <>
       <section className="relative -mt-16 overflow-hidden bg-navy-700 pt-16 text-white">
         <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
-        <div className="container-x relative grid items-center gap-12 py-20 lg:grid-cols-2 lg:py-24">
+        <HeroScene />
+        <div className="container-x relative z-10 grid items-center gap-12 pb-36 pt-20 lg:grid-cols-2 lg:pb-40 lg:pt-24">
           <div>
-            <ComingSoonBadge light className="mb-4" />
+            <div className="mb-4">
+              <ComingSoonBadge light />
+            </div>
             <Eyebrow className="text-teal-300">Revvo App</Eyebrow>
             <Heading as="h1" className="text-white">
               Your car's full story, in your pocket.
@@ -65,7 +69,9 @@ export default function Drivers() {
             </div>
           </div>
           <Reveal className="flex justify-center lg:justify-end" delay={0.15}>
-            <PassportPreview />
+            <div className="w-full max-w-md motion-safe:animate-float [animation-duration:9s]">
+              <PassportPreview />
+            </div>
           </Reveal>
         </div>
       </section>

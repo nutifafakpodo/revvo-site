@@ -29,7 +29,9 @@ export default function Businesses() {
     <>
       <section className="border-b border-border bg-card">
         <div className="container-x py-16 sm:py-20">
-          <ComingSoonBadge className="mb-4" />
+          <div className="mb-4">
+            <ComingSoonBadge />
+          </div>
           <Eyebrow>Revvo Business</Eyebrow>
           <Heading as="h1" className="max-w-3xl">
             Built for the bay. Open to everyone around it.

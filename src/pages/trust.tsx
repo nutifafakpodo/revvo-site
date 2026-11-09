@@ -58,7 +58,9 @@ export default function Trust() {
     <>
       <section className="border-b border-border bg-card">
         <div className="container-x py-16 sm:py-20">
-          <ComingSoonBadge className="mb-4" />
+          <div className="mb-4">
+            <ComingSoonBadge />
+          </div>
           <Eyebrow>Trust & privacy</Eyebrow>
           <Heading as="h1" className="max-w-3xl">
             A record is only useful if it can be trusted. And only fair if it protects the owner.

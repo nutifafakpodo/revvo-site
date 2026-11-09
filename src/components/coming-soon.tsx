@@ -10,7 +10,7 @@ export function ComingSoonBar() {
         <span className="inline-flex items-center gap-1.5 font-bold uppercase tracking-wider">
           <Sparkles className="size-4" /> Coming soon
         </span>
-        <span className="text-white/90">Revvo launches with garages and service bays in Accra, Ghana.</span>
+        <span className="hidden text-white/90 sm:inline">Revvo launches with garages and service bays in Accra, Ghana.</span>
         <a href={INTEREST_ANCHOR} className="inline-flex items-center gap-1 font-semibold underline-offset-4 hover:underline">
           Register your interest <ArrowRight className="size-4" />
         </a>

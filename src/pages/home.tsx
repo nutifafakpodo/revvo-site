@@ -25,6 +25,8 @@ import { Reveal } from "@/components/reveal";
 import { AUDIENCES, DRIVER_AUDIENCE } from "@/lib/content";
 import { INTEREST_ANCHOR } from "@/lib/links";
 import { ComingSoonBadge } from "@/components/coming-soon";
+import { HeroScene } from "@/components/motion/hero-scene";
+import { ToolBoard } from "@/components/motion/tool-board";
 import { usePageMeta } from "@/lib/seo";
 
 const PAINS = [
@@ -98,7 +100,8 @@ export default function Home() {
           className="pointer-events-none absolute -bottom-40 right-0 size-[28rem] rounded-full bg-navy-500/40 blur-3xl"
           aria-hidden="true"
         />
-        <div className="container-x relative grid items-center gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28">
+        <HeroScene />
+        <div className="container-x relative z-10 grid items-center gap-12 pb-36 pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:pb-40 lg:pt-28">
           <div>
             <ComingSoonBadge light />
             <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-teal-300">
@@ -125,7 +128,9 @@ export default function Home() {
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-navy-200">
               What your customer receives after every job
             </p>
-            <PassportPreview />
+            <div className="w-full max-w-md motion-safe:animate-float [animation-duration:9s]">
+              <PassportPreview />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -206,11 +211,12 @@ export default function Home() {
                 Full workshop details
               </ButtonLink>
             </div>
+            <ToolBoard className="mt-10" />
           </div>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {WORKSHOP_FEATURES.map((f, i) => (
               <Reveal key={f.title} delay={(i % 3) * 0.06}>
-                <Card className="h-full p-5">
+                <Card className="h-full p-5 transition-all hover:-translate-y-0.5 hover:border-teal-400 hover:shadow-float/20">
                   <IconBadge icon={f.icon} tone="teal" className="size-10" />
                   <h3 className="mt-4 font-bold">{f.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{f.body}</p>

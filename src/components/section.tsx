@@ -7,7 +7,7 @@ export function Section({
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
   return (
-    <section className={cn("py-16 sm:py-24", className)} {...props}>
+    <section className={cn("scroll-mt-16 py-16 sm:py-24", className)} {...props}>
       <div className="container-x">{children}</div>
     </section>
   );
