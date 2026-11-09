@@ -113,7 +113,7 @@ export default function Home() {
           aria-hidden="true"
         />
         <HeroScene />
-        <div className="container-x relative z-10 grid items-center gap-12 pb-36 pt-16 lg:grid-cols-[1.1fr_0.9fr] lg:pb-40 lg:pt-24">
+        <div className="container-x relative z-10 grid items-center gap-12 pb-36 pt-16 lg:grid-cols-[1.25fr_0.75fr] lg:pb-40 lg:pt-24">
           <Stagger>
             <StaggerItem>
               <ComingSoonBadge light />
@@ -124,7 +124,7 @@ export default function Home() {
               </p>
             </StaggerItem>
             <StaggerItem>
-              <Heading as="h1" className="mt-3 text-white sm:text-5xl lg:text-[3.4rem] lg:leading-[1.08]">
+              <Heading as="h1" className="mt-3 text-[2.1rem] leading-[1.1] text-white sm:text-[2.75rem] lg:text-[3rem] lg:leading-[1.08]">
                 <span className="block">Log the servicing job.</span>
                 <span className="block text-teal-300">Get paid by the customer.</span>
                 <span className="block bg-gradient-to-r from-teal-300 to-teal-400 bg-clip-text text-transparent">
