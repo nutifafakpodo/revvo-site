@@ -77,14 +77,14 @@ export function InterestForm() {
       <div className="container-x grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <div className="lg:sticky lg:top-24 lg:self-start">
           <Eyebrow>Register your interest</Eyebrow>
-          <Heading>Be first in line when Revvo launches.</Heading>
+          <Heading>Get your workshop on Revvo first.</Heading>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Whether you run a workshop, sell parts, insure vehicles, or just want your own car's
-            passport, leave your details and we will contact you as we open up in Accra.
+            Run a garage or service bay? Leave your details and we will set you up in the first
+            Accra cohort. Parts sellers, dealers, insurers, fleets and drivers are welcome too.
           </p>
           <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
-            <li>Businesses: early access to the pilot and onboarding on site.</li>
-            <li>Drivers: a passport for your car from the first Revvo service.</li>
+            <li>Workshops: early access, onboarding on site, passport QR cards for your customers.</li>
+            <li>Everyone else: we will contact you as your part of Revvo opens.</li>
             <li>No spam. We only use your details to tell you about Revvo.</li>
           </ul>
           <a

@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 const DARK_HERO_ROUTES = new Set(["/", "/drivers"]);
 
 const NAV = [
-  { href: "/businesses", label: "For businesses" },
+  { href: "/businesses", label: "For workshops" },
   { href: "/drivers", label: "For drivers" },
   { href: "/trust", label: "Trust & privacy" },
 ];
@@ -67,7 +67,7 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-2 md:flex">
           <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="sm" data-testid="link-interest">
-            Register interest <ArrowRight />
+            Register your workshop <ArrowRight />
           </ButtonLink>
         </div>
 
@@ -101,7 +101,7 @@ export function SiteHeader() {
             ))}
             <div className="mt-2 flex flex-col gap-2 border-t border-border pt-4">
               <ButtonLink href={INTEREST_ANCHOR} variant="secondary" onClick={() => setOpen(false)}>
-                Register interest <ArrowRight />
+                Register your workshop <ArrowRight />
               </ButtonLink>
             </div>
           </nav>

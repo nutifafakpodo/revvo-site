@@ -5,12 +5,14 @@ import {
   BarChart3,
   Bell,
   ClipboardList,
-  Fingerprint,
-  Lock,
+  Gift,
+  Megaphone,
   MessageSquare,
+  QrCode,
+  Repeat,
   ShoppingCart,
   Smartphone,
-  Store,
+  Timer,
   Users,
   Wrench,
 } from "lucide-react";
@@ -25,44 +27,62 @@ import { INTEREST_ANCHOR } from "@/lib/links";
 import { ComingSoonBadge } from "@/components/coming-soon";
 import { usePageMeta } from "@/lib/seo";
 
+const PAINS = [
+  {
+    title: "You see hundreds of cars. You know almost none of the owners.",
+    body: "Every job is a transaction that vanishes. No names, no numbers, no way to tell last quarter's customer it is time to come back.",
+  },
+  {
+    title: "The service card ends up in the glovebox, or the bin.",
+    body: "Owners cannot remember what was done or when, so the next mechanic starts from zero and the car is under-serviced until something fails.",
+  },
+  {
+    title: "Next time, they go wherever is nearest.",
+    body: "Without a reason to return, loyalty is luck. Revvo gives you the record, the reminder and the reward that bring the car back to your bay.",
+  },
+];
+
 const STEPS = [
   {
     icon: Wrench,
-    title: "The workshop logs the job",
-    body: "Plate, work done, mileage, parts used. Under a minute on a phone or tablet, by a signed-in member of a registered business.",
+    title: "You log the job",
+    body: "Plate, work done, mileage, parts used. Under a minute on the phone or tablet you already have. The vehicle is created automatically if it is new.",
   },
   {
     icon: MessageSquare,
-    title: "The owner gets the proof",
-    body: "An SMS lands with a link to the vehicle passport. The new record is already there, marked verified, with the workshop's name on it.",
+    title: "Your customer gets the proof",
+    body: "An SMS lands with a link to their car's passport. The record is already there, marked verified, with your workshop's name on it.",
   },
   {
-    icon: Bell,
-    title: "The record keeps working",
-    body: "Reminders bring the car back. Buyers can check the history. Insurers quote on real data. Parts fit because the vehicle is known.",
+    icon: Repeat,
+    title: "They come back to you",
+    body: "The next-service reminder fires with your name on it. Loyalty points build up per visit. Your CRM already knows who they are.",
   },
 ];
 
-const BUSINESS_FEATURES = [
-  { icon: ClipboardList, title: "Log service", body: "Verified records with parts, mileage and technician, in seconds." },
-  { icon: Users, title: "CRM", body: "Customers and vehicles grouped from real jobs. Search, export, follow up." },
+const WORKSHOP_FEATURES = [
+  { icon: ClipboardList, title: "Log service", body: "Verified records with parts, mileage and technician, in seconds. Attach marketplace parts straight from the job." },
+  { icon: Users, title: "Customers (CRM)", body: "Customers and their vehicles grouped from real jobs. Search, export to CSV, follow up." },
+  { icon: Bell, title: "Reminders", body: "Automatic next-service reminders tied to real mileage and dates, sent under your name." },
+  { icon: Gift, title: "Loyalty programme", body: "Points per visit and redeemable rewards that give customers a reason to return." },
+  { icon: Megaphone, title: "Promotions", body: "Send an offer to your past customers, for example every Toyota owner you serviced this year." },
   { icon: BarChart3, title: "Analytics", body: "Monthly volume, service mix, repeat visits and revenue at a glance." },
-  { icon: ShoppingCart, title: "Marketplace", body: "Find parts by vehicle or fault and send purchase requests to sellers." },
-  { icon: Bell, title: "Reminders & loyalty", body: "Automatic next-service reminders and points that bring customers back." },
-  { icon: Users, title: "Team", body: "Invite staff by email. Every record carries who logged it." },
+  { icon: ShoppingCart, title: "Parts marketplace", body: "Find parts by vehicle or fault and send purchase requests to verified sellers." },
+  { icon: Users, title: "Team", body: "Invite your staff by email. Every record carries who logged it." },
+  { icon: QrCode, title: "Passport link & QR", body: "Hand over a QR card or link at completion. Shareable proof your customer will show the next buyer." },
 ];
 
-const DRIVER_FEATURES = [
-  { icon: BadgeCheck, title: "Your passport", body: "Verified history, ownership timeline, and a QR code you can share with a buyer." },
-  { icon: Fingerprint, title: "Claim your car", body: "A one-time code to the phone on file makes you the verified owner." },
-  { icon: Store, title: "Stations & store", body: "Verified workshops near you, parts that fit, fuel prices, rewards." },
-  { icon: Smartphone, title: "Insurance renewal", body: "Find your policy, compare quotes and request a renewal in a few taps." },
+const CUSTOMER_SIDE = [
+  { icon: BadgeCheck, title: "A verified passport", body: "Every job you log appears with a verified badge and your workshop's name." },
+  { icon: Bell, title: "Reminders that land", body: "Next oil change or inspection, based on the mileage you recorded." },
+  { icon: Gift, title: "Rewards from you", body: "Loyalty progress per workshop, so returning to your bay pays off." },
+  { icon: Smartphone, title: "Nothing to install", body: "A link works in any browser. Claiming the car takes a one-time code." },
 ];
 
 export default function Home() {
   usePageMeta(
     "Revvo",
-    "Revvo gives every vehicle a digital passport. Garages log verified service work, owners get proof, and buyers, insurers and dealers can trust the record. Coming soon to Accra, Ghana.",
+    "Revvo is the workshop system for garages and service bays in Accra: log a service in under a minute, build a CRM from real jobs, and bring customers back with reminders and rewards. Every record becomes a verified passport for the customer's car.",
   );
 
   return (
@@ -81,35 +101,42 @@ export default function Home() {
         <div className="container-x relative grid items-center gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28">
           <div>
             <ComingSoonBadge light />
-            <Heading as="h1" className="mt-6 text-white">
-              Every service your car gets, <span className="text-teal-300">verified and on record.</span>
+            <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-teal-300">
+              For garages & service bays
+            </p>
+            <Heading as="h1" className="mt-3 text-white">
+              Log the job once. <span className="text-teal-300">Keep the customer for years.</span>
             </Heading>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-navy-200">
-              Revvo gives every vehicle a digital passport. Workshops log the work, owners get the
-              proof, and buyers, insurers and dealers can finally trust what they see.
+              Revvo turns every service you log into a verified record for the customer's car, a
+              customer in your CRM, and a reminder that brings them back to your bay. Built for
+              workshops in Accra.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="lg" data-testid="hero-interest">
-                Register your interest <ArrowRight />
+                Register your workshop <ArrowRight />
               </ButtonLink>
-              <ButtonLink href="/businesses" variant="inverse" size="lg">
-                See how it works for your business
+              <ButtonLink href="#how-it-works" variant="inverse" size="lg">
+                See how it works
               </ButtonLink>
             </div>
           </div>
-          <Reveal className="flex justify-center lg:justify-end" delay={0.15}>
+          <Reveal className="flex flex-col items-center lg:items-end" delay={0.15}>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-navy-200">
+              What your customer receives after every job
+            </p>
             <PassportPreview />
           </Reveal>
         </div>
       </section>
 
-      {/* Principles strip */}
+      {/* Outcomes strip */}
       <section className="border-b border-border bg-card">
         <div className="container-x grid gap-6 py-8 sm:grid-cols-3">
           {[
-            { icon: BadgeCheck, text: "Verified at source: only registered businesses write history." },
-            { icon: Lock, text: "Owner names and phone numbers are never public." },
-            { icon: Smartphone, text: "No app install needed. A link works in any browser." },
+            { icon: Timer, text: "Log a service in under a minute on any phone, tablet or laptop." },
+            { icon: Repeat, text: "Customers get proof by SMS and a reminder that brings them back." },
+            { icon: BadgeCheck, text: "Every record carries your workshop's name and a verified badge." },
           ].map(({ icon: Icon, text }) => (
             <div key={text} className="flex items-start gap-3 text-sm text-muted-foreground">
               <Icon className="mt-0.5 size-5 shrink-0 text-teal-600" />
@@ -119,12 +146,31 @@ export default function Home() {
         </div>
       </section>
 
+      {/* The problem */}
+      <Section id="problem">
+        <SectionHeader
+          eyebrow="The problem"
+          title="Busy bays lose customers they never knew they had."
+          lede="Workshops in Accra see hundreds of vehicles a week and keep almost nothing about them. Revvo fixes that at the moment it matters: when the job is done."
+        />
+        <div className="grid gap-6 md:grid-cols-3">
+          {PAINS.map((p, i) => (
+            <Reveal key={p.title} delay={i * 0.08}>
+              <Card className="h-full border-l-4 border-l-teal-500">
+                <h3 className="text-lg font-bold leading-snug">{p.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+              </Card>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
       {/* How it works */}
-      <Section id="how-it-works">
+      <Section className="bg-muted/60" id="how-it-works">
         <SectionHeader
           eyebrow="How it works"
-          title="One log at the bay. A record that follows the car for life."
-          lede="The loop is simple, and it compounds: every job logged makes the passport more valuable to the owner, and the owner more likely to come back."
+          title="One log at the bay. A customer who keeps coming back."
+          lede="The loop is simple, and it compounds: every job you log makes the passport more valuable to the owner, and the owner more likely to return to you."
         />
         <ol className="grid gap-6 md:grid-cols-3">
           {STEPS.map((step, i) => (
@@ -142,70 +188,28 @@ export default function Home() {
         </ol>
       </Section>
 
-      {/* Audiences */}
-      <Section className="bg-muted/60" id="who">
-        <SectionHeader
-          eyebrow="Who it's for"
-          title="Built around the vehicle, so every business around it benefits."
-          lede="Revvo is a trust layer first. Marketplace, insurance and dealer flows all attach to a verified vehicle identity and its service history."
-          align="center"
-        />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {AUDIENCES.map((a, i) => (
-            <Reveal key={a.id} delay={(i % 4) * 0.06}>
-              <Link
-                href={`/businesses#${a.id}`}
-                className="group flex h-full flex-col rounded-2xl border border-border bg-card p-5 shadow-card transition-colors hover:border-teal-400"
-                data-testid={`audience-${a.id}`}
-              >
-                <IconBadge icon={a.icon} />
-                <h3 className="mt-4 font-bold">{a.label}</h3>
-                <p className="mt-1.5 flex-1 text-sm text-muted-foreground">{a.short}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-teal-600">
-                  Learn more <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </Link>
-            </Reveal>
-          ))}
-          <Reveal delay={0.12}>
-            <Link
-              href="/drivers"
-              className="group flex h-full flex-col rounded-2xl bg-navy-700 p-5 text-white shadow-card transition-colors hover:bg-navy-600"
-              data-testid="audience-drivers"
-            >
-              <IconBadge icon={DRIVER_AUDIENCE.icon} tone="light" />
-              <h3 className="mt-4 font-bold">{DRIVER_AUDIENCE.label}</h3>
-              <p className="mt-1.5 flex-1 text-sm text-navy-200">{DRIVER_AUDIENCE.short}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-teal-300">
-                For drivers <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-              </span>
-            </Link>
-          </Reveal>
-        </div>
-      </Section>
-
-      {/* Business product */}
-      <Section id="business">
-        <div className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+      {/* Workshop product */}
+      <Section id="workshop">
+        <div className="grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="lg:sticky lg:top-24">
             <Eyebrow>Revvo Business</Eyebrow>
-            <Heading>The workshop system that pays for itself in repeat visits.</Heading>
+            <Heading>Everything a busy bay needs. Nothing it doesn't.</Heading>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              A CRM, a service log, a parts marketplace and a loyalty engine, in one workspace that
-              only shows the modules your business type needs.
+              A service log, a CRM, reminders, loyalty, promotions, analytics and parts ordering in
+              one workspace. It only shows the modules a workshop uses.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/businesses" variant="primary">
-                Explore business tools <ArrowRight />
+              <ButtonLink href={INTEREST_ANCHOR} variant="secondary">
+                Register your workshop <ArrowRight />
               </ButtonLink>
-              <ButtonLink href={INTEREST_ANCHOR} variant="outline">
-                Register interest
+              <ButtonLink href="/businesses#garages" variant="outline">
+                Full workshop details
               </ButtonLink>
             </div>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {BUSINESS_FEATURES.map((f, i) => (
-              <Reveal key={f.title} delay={(i % 2) * 0.06}>
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {WORKSHOP_FEATURES.map((f, i) => (
+              <Reveal key={f.title} delay={(i % 3) * 0.06}>
                 <Card className="h-full p-5">
                   <IconBadge icon={f.icon} tone="teal" className="size-10" />
                   <h3 className="mt-4 font-bold">{f.title}</h3>
@@ -217,16 +221,16 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Driver product */}
-      <Section className="bg-navy-900 text-white" id="drivers">
+      {/* Customer side */}
+      <Section className="bg-navy-900 text-white" id="customers">
         <SectionHeader
-          eyebrow="Revvo App"
-          title="For drivers, the car finally has a memory."
-          lede="No more receipts in the glovebox. Your passport holds every verified service, reminds you what's due, and proves the car was looked after when it's time to sell."
+          eyebrow="What your customers get"
+          title="A passport they will actually use, with your name on every record."
+          lede="Your customers get a permanent, verified history of their car that reminds them what is due and proves it was looked after when they sell. Every entry points back to the workshop that did the work."
           dark
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {DRIVER_FEATURES.map((f, i) => (
+          {CUSTOMER_SIDE.map((f, i) => (
             <Reveal key={f.title} delay={(i % 4) * 0.06}>
               <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-5">
                 <IconBadge icon={f.icon} tone="light" className="size-10" />
@@ -236,16 +240,61 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href="/drivers" variant="secondary">
-            See the driver app <ArrowRight />
+        <div className="mt-10">
+          <ButtonLink href="/drivers" variant="inverse">
+            See the driver experience <ArrowRight />
           </ButtonLink>
         </div>
       </Section>
 
+      {/* Also on Revvo */}
+      <Section id="who">
+        <SectionHeader
+          eyebrow="Also on Revvo"
+          title="The businesses around your bay plug into the same records."
+          lede="Because every record is tied to a verified vehicle, parts sellers, dealerships, insurers and fleets can build on what workshops log. They are welcome in the pilot too."
+        />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {AUDIENCES.filter((a) => a.id !== "garages").map((a, i) => (
+            <Reveal key={a.id} delay={(i % 3) * 0.06}>
+              <Link
+                href={`/businesses#${a.id}`}
+                className="group flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-card transition-colors hover:border-teal-400"
+                data-testid={`audience-${a.id}`}
+              >
+                <IconBadge icon={a.icon} className="size-10" />
+                <div className="min-w-0">
+                  <h3 className="font-bold">{a.label}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{a.short}</p>
+                  <span className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-teal-600">
+                    Learn more <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+          <Reveal delay={0.12}>
+            <Link
+              href="/drivers"
+              className="group flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-card transition-colors hover:border-teal-400"
+              data-testid="audience-drivers"
+            >
+              <IconBadge icon={DRIVER_AUDIENCE.icon} className="size-10" />
+              <div className="min-w-0">
+                <h3 className="font-bold">{DRIVER_AUDIENCE.label}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{DRIVER_AUDIENCE.short}</p>
+                <span className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-teal-600">
+                  For drivers <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
+            </Link>
+          </Reveal>
+        </div>
+      </Section>
+
       {/* FAQ */}
-      <Section id="faq">
-        <SectionHeader eyebrow="Questions" title="Straight answers." align="center" />
+      <Section className="bg-muted/60" id="faq">
+        <SectionHeader eyebrow="Questions from workshops" title="Straight answers." align="center" />
         <Faq />
       </Section>
 

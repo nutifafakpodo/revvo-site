@@ -129,23 +129,35 @@ export const DRIVER_AUDIENCE = {
 
 export const FAQ: { q: string; a: string }[] = [
   {
+    q: "What do I need to start logging services?",
+    a: "A phone, tablet or laptop with a browser. There is no hardware to buy and nothing to install. You sign in, enter the plate, and log the job.",
+  },
+  {
+    q: "How long does logging a service take?",
+    a: "Under a minute: plate, work done, mileage, parts used and who did it. If the vehicle is new to Revvo it is created automatically, and the owner gets their passport link by SMS the moment you save.",
+  },
+  {
     q: "What makes a Revvo record \"verified\"?",
-    a: "Only authenticated members of a registered business can create service records, and every record stores who created it and where. Owners cannot self-report history into the verified timeline, which is what makes it worth trusting.",
+    a: "Only signed-in members of a registered workshop can create service records, and every record stores who created it and where. Owners cannot self-report history into the verified timeline, which is what makes it worth trusting, and what makes your name on it worth something.",
   },
   {
-    q: "Do drivers need to install anything?",
-    a: "No. After a service the owner gets a link to their vehicle passport by SMS. It opens in any browser. Claiming the vehicle to unlock owner features takes a one-time code sent to the phone on file.",
+    q: "Do my customers need to install an app?",
+    a: "No. They get a link by SMS that opens in any browser. Claiming the vehicle to unlock reminders and rewards takes a one-time code sent to the phone on file.",
   },
   {
-    q: "What can the public see on a passport?",
-    a: "Vehicle details and a summary of verified services. Owner names, phone numbers and emails are never shown publicly, and costs, notes, invoices and photos stay private to the owner and the business.",
+    q: "Can my whole team use it?",
+    a: "Yes. Invite staff by email and they log under your workshop. Every record shows who logged it, so you keep oversight without standing over anyone.",
   },
   {
-    q: "Does Revvo take payments?",
-    a: "Not during the pilot. Marketplace orders and insurance renewals are request-based: the seller or insurer confirms and settles with the customer directly. We add payment processing once fulfilment and dispute rules are in place.",
+    q: "What does Revvo cost?",
+    a: "We will share pricing with pilot workshops before launch. There is no long-term commitment during the pilot, and nothing to pay to register your interest.",
+  },
+  {
+    q: "What happens to my customers' data?",
+    a: "Owner names and phone numbers are never public. A shared passport shows the vehicle and verified service summaries only. Costs, notes and invoices stay between you and the customer.",
   },
   {
     q: "When and where is Revvo available?",
-    a: "Revvo is coming soon, launching first with service bays, parts sellers and an insurance partner in Accra, Ghana. Register your interest below and we will contact you before launch, wherever you operate.",
+    a: "Revvo is coming soon, launching first with garages and service bays in Accra, Ghana, alongside a few parts sellers and an insurance partner. Register your interest below and we will contact you before launch, wherever you operate.",
   },
 ];

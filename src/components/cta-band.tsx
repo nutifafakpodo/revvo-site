@@ -4,7 +4,7 @@ import { INTEREST_ANCHOR } from "@/lib/links";
 
 export function CtaBand({
   title = "Bring your workshop onto Revvo.",
-  body = "We are lining up a first cohort of service bays, parts sellers and insurers in Accra. Register your interest and we will contact you before launch.",
+  body = "We are lining up a first cohort of garages and service bays in Accra. Register your workshop and we will contact you before launch.",
 }: {
   title?: string;
   body?: string;
@@ -23,7 +23,7 @@ export function CtaBand({
             <p className="mt-4 text-lg text-navy-200">{body}</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="lg">
-                Register your interest <ArrowRight />
+                Register your workshop <ArrowRight />
               </ButtonLink>
               <ButtonLink href="/pilot" variant="inverse" size="lg">
                 About the pilot

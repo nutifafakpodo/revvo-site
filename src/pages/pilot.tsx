@@ -39,15 +39,16 @@ export default function Pilot() {
           <ComingSoonBadge className="mb-4" />
           <Eyebrow>The Accra pilot · limited cohort</Eyebrow>
           <Heading as="h1" className="max-w-3xl">
-            Be part of the first cohort to log verified services.
+            Be one of the first workshops in Accra to log verified services.
           </Heading>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Before launch we are hand-picking a small group of businesses in Accra to run Revvo
-            with us. Register your interest and we will be in touch before we open the doors.
+            Before launch we are hand-picking a small group of garages and service bays in Accra to
+            run Revvo with us, alongside a few parts sellers and one insurer. Register your workshop
+            and we will be in touch before we open the doors.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="lg" data-testid="pilot-register">
-              Register your interest <ArrowRight />
+              Register your workshop <ArrowRight />
             </ButtonLink>
             <ButtonLink href="/businesses" variant="outline" size="lg">
               What each business type gets

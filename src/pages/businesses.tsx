@@ -22,7 +22,7 @@ const MODULES: { name: string; types: string }[] = [
 export default function Businesses() {
   usePageMeta(
     "For businesses",
-    "Revvo Business gives garages, parts sellers, manufacturers, dealerships, insurers and fleets one workspace built on verified vehicle history.",
+    "Revvo Business is built for garages and service bays first: log services, grow a CRM from real jobs, bring customers back. Parts sellers, dealerships, insurers and fleets share the same verified records.",
   );
 
   return (
@@ -32,16 +32,16 @@ export default function Businesses() {
           <ComingSoonBadge className="mb-4" />
           <Eyebrow>Revvo Business</Eyebrow>
           <Heading as="h1" className="max-w-3xl">
-            One workspace for every business that touches a car.
+            Built for the bay. Open to everyone around it.
           </Heading>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Sign in as a garage and you see service logging and a CRM. Sign in as a parts seller and
-            you see inventory and orders. Same platform, same verified vehicle records, only the
-            modules you need.
+            Garages and service bays are where Revvo starts: service logging, a CRM that fills
+            itself, reminders, loyalty and parts ordering. Parts sellers, dealerships, insurers and
+            fleets plug into the same verified vehicle records, and only see the modules they need.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="lg">
-              Register your interest <ArrowRight />
+              Register your workshop <ArrowRight />
             </ButtonLink>
             <ButtonLink href="/pilot" variant="outline" size="lg">
               About the pilot

@@ -32,8 +32,8 @@ export function SiteFooter() {
         <div className="max-w-xs">
           <Logo light />
           <p className="mt-4 text-sm leading-relaxed">
-            The verified service record for every car. Built for garages, sellers, dealers,
-            insurers, fleets and the drivers they serve.
+            The workshop system that keeps customers coming back, built on a verified service
+            record for every car. For garages and service bays first, and everyone around them.
           </p>
           <p className="mt-4 text-xs text-navy-500">Coming soon to Accra, Ghana.</p>
         </div>
