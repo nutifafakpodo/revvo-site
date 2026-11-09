@@ -124,11 +124,11 @@ export default function Home() {
               </p>
             </StaggerItem>
             <StaggerItem>
-              <Heading as="h1" className="mt-3 text-[2.1rem] leading-[1.1] text-white sm:text-[2.75rem] lg:text-[3rem] lg:leading-[1.08]">
-                <span className="block">Log the servicing job.</span>
-                <span className="block text-teal-300">Get paid by the customer.</span>
+              <Heading as="h1" className="mt-3 text-[2rem] leading-[1.1] text-white sm:text-[2.6rem] lg:text-[2.8rem] lg:leading-[1.08]">
+                <span className="block">Log the servicing jobs.</span>
+                <span className="block text-teal-300">Accept payments via MoMo or card from customers.</span>
                 <span className="block bg-gradient-to-r from-teal-300 to-teal-400 bg-clip-text text-transparent">
-                  Keep the customer coming back for years.
+                  Keep the customers coming back forever.
                 </span>
               </Heading>
             </StaggerItem>
