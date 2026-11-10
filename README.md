@@ -27,9 +27,8 @@ All settings are build-time `VITE_*` variables (see `.env.example`).
 
 | Variable | Purpose | Default |
 |---|---|---|
-| `VITE_CONSUMER_APP_URL` | Driver app (plate lookup, "Open the app") | `/app` |
-| `VITE_BUSINESS_APP_URL` | Business app (sign in / sign up) | `/business` |
-| `VITE_ADMIN_APP_URL` | Admin console (footer link) | `/admin` |
+| `VITE_BUSINESS_APP_URL` | Revvo Business: "Sign in" links to its sign-in and sign-up | unset (links hidden; dev: `localhost:5173/business`) |
+| `VITE_CONSUMER_APP_URL` | Revvo for car owners: "Sign in" links to its sign-in and sign-up | unset (links hidden; dev: `localhost:5175/app`) |
 | `VITE_CONTACT_EMAIL` | Optional contact email in the footer | unset |
 | `BASE_PATH` | Sub-path the site is served from | `/` |
 

@@ -4,6 +4,7 @@ import { ArrowRight, Menu, X } from "lucide-react";
 import { motion, useScroll } from "framer-motion";
 import { Logo } from "./logo";
 import { ButtonLink } from "./button";
+import { AccountLinksMobile, AccountMenu } from "./account-menu";
 import { INTEREST_ANCHOR } from "@/lib/links";
 import { cn } from "@/lib/utils";
 
@@ -68,6 +69,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
+          <AccountMenu onDark={onDark} />
           <ButtonLink href={INTEREST_ANCHOR} variant="secondary" size="sm" data-testid="link-interest">
             Register your workshop <ArrowRight />
           </ButtonLink>
@@ -108,6 +110,7 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <AccountLinksMobile />
             <div className="mt-2 flex flex-col gap-2 border-t border-border pt-4">
               <ButtonLink href={INTEREST_ANCHOR} variant="secondary" onClick={() => setOpen(false)}>
                 Register your workshop <ArrowRight />

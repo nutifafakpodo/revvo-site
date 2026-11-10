@@ -34,7 +34,6 @@ jobs:
           BASE_PATH: /
           VITE_CONSUMER_APP_URL: ${{ vars.VITE_CONSUMER_APP_URL }}
           VITE_BUSINESS_APP_URL: ${{ vars.VITE_BUSINESS_APP_URL }}
-          VITE_ADMIN_APP_URL: ${{ vars.VITE_ADMIN_APP_URL }}
           VITE_CONTACT_EMAIL: ${{ vars.VITE_CONTACT_EMAIL }}
       # GitHub Pages has no rewrite rules; serving index.html as 404.html keeps
       # client-side routes (/businesses, /pilot, …) working on a hard refresh.
